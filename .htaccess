@@ -1,2 +1,4 @@
 RewriteEngine On
-RewriteRule ^inicio $index.php?c=views
+RewriteRule ^inicio$ index.php?c=views
+RewriteRule ^validar-login$ index.php?c=auth&a=logIn
+RewriteRule adminstracion$ index.php?c=admin
