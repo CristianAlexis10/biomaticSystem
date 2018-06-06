@@ -2,6 +2,7 @@
 require_once "model/conn.model.php";
 require_once "model/master.model.php";
 require_once "controller/doizer.controller.php";
+session_start();
 if (isset($_REQUEST['c'])) {
   $controller = strtolower($_REQUEST['c']);
   require_once "controller/$controller.controller.php";
