@@ -27,6 +27,21 @@
   background: #eee;
   padding: 10px 0 ;
   outline: none;
+  transition: all .5s ease-out;
+
+}
+.login--label{
+  transform: translateY(-25px);
+  transition: all .5s ease;
+  color: #9e9e9e;
+}
+.login--input:focus , .login--input:valid {
+  border-bottom: 1px solid #248275;
+}
+
+.login--input:focus ~ label, .login--input:valid ~ label{
+  color: #248275;
+  transform: translateY(-55px);
 }
 
 .btn{

@@ -10,12 +10,12 @@
       <img src="views/assets/image/logo.png" alt="logo">
       <form  id="formLogin">
         <div class="form--group">
+          <input type="email" id="email" class="login--input" required>
           <label for="email" class="login--label">correo:</label>
-          <input type="email" id="email" class="login--input">
         </div>
         <div class="form--group">
+          <input type="password" id="password" class="login--input" required>
           <label for="password" class="login--label">contraseña:</label>
-          <input type="password" id="password" class="login--input">
         </div>
         <div class="form--group">
           <input type="submit" value="ingresar" class="btn">
