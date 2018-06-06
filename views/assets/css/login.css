@@ -1,0 +1,38 @@
+*{margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif;}
+.container--modal{
+  width: 500px;
+  height: 500px;
+  box-shadow: 5px 5px 20px 2px #bbbbbb;
+  position: absolute;
+  top: 0; left:0; right: 0; bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+.container--modal img{
+  width: 150px;
+}
+.container--modal form{
+  width: 80%;
+}
+.form--group{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.login--input{
+  border: none;
+  background: #eee;
+  padding: 10px 0 ;
+  outline: none;
+}
+
+.btn{
+  outline: none;
+  border: none;
+  padding: 10px;
+  background: #248275;
+  color: white;
+}
