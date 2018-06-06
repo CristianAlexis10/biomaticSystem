@@ -1,14 +1,15 @@
 <?php
 	class ViewsController{
 		private $master;
-		// private $doizer;
+		private $doizer;
 	 	function __CONSTRUCT(){
 	 		$this->master =  MasterModel();
-	 		// $this->doizer = new DoizerController;
+	 		$this->doizer = new DoizerController;
 	 	}
 		function main(){
-			$res = $this->master->selectAll("user");
-			echo json_encode(print_r($res));
+			require_once "views/include/scope.header.php";
+			require_once "views/modules/index.php";
+			require_once "views/include/scope.footer.php";
 		}
 	}
 ?>
