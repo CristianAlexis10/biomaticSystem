@@ -1,5 +1,6 @@
 <?php
 require_once "model/conn.model.php";
+require_once "model/master.model.php";
 if (isset($_REQUEST['c'])) {
   $controller = strtolower($_REQUEST['c']);
   require_once "controller/$controller.controller.php";
@@ -9,7 +10,6 @@ if (isset($_REQUEST['c'])) {
   call_user_func(array($controller,$action));
 }else{
   $controller = "views";
-  $controller = strtolower($_REQUEST['c']);
   require_once "controller/$controller.controller.php";
   $controller = ucwords($controller)."Controller";
   $controller = new $controller;
