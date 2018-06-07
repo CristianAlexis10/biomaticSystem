@@ -8,7 +8,7 @@
   <body>
     <div id="loginModal">
       <div class="container--modal">
-        <span>&times;</span>
+        <span id="closeModal">&times;</span>
       <img src="views/assets/image/logo.png" alt="logo">
       <form  id="formLogin">
         <div class="form--group">
@@ -36,14 +36,21 @@
     <section class="section two">
 
     </section>
-    <!-- <script src="views/assets/lib/jquery.js"> </script>
-    <script src="views/assets/js/main.js"></script> -->
+    <script src="views/assets/lib/jquery.js"></script>
+    <script src="views/assets/js/main.js"></script>
     <script type="text/javascript">
+    if (document.getElementById('loginModal')) {
       var modal = document.getElementById('loginModal');
       var openModal = document.getElementById('loginBtn');
+      var closeModal = document.getElementById('closeModal');
       openModal.onclick = function() {
         modal.style.display = "flex";
       }
+      closeModal.onclick = function() {
+        modal.style.display = "none";
+      }
+
+    }
     </script>
   </body>
 </html>
