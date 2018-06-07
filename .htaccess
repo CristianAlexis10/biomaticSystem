@@ -19,4 +19,4 @@ RewriteRule ^asignar_integrantes$ index.php?c=views&a=collaborators
 RewriteRule ^agregar_colaborador$ index.php?c=groups&a=addCollaborators
 RewriteRule ^finalizar-registro-grupo$ index.php?c=groups&a=finalizar
 RewriteRule ^eliminar-grupo$ index.php?c=groups&a=delete
-RewriteRule ^ver-grupo-(\w+)$ index.php?c=views&a=viewGroup
+RewriteRule ^ver-grupo-(\w+)$ index.php?c=views&a=viewGroup&data=$1
