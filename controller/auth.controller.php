@@ -36,5 +36,9 @@ class AuthController{
     }
 
   }
+  function logOut(){
+    session_destroy();
+    header("Location: inicio");
+  }
 }
 ?>
