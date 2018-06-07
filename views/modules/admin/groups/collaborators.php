@@ -1,3 +1,6 @@
+<?php if (!isset($_SESSION['new_grup'])) {
+  header("Location: gestion-grupos");
+}?>
 <a href="finalizar-registro-grupo">Finalizar Registro</a>
 <table class="datatable" id="tableUser">
   <thead>

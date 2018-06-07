@@ -230,7 +230,23 @@ function asignar_grupo(usu,grupo){
       data:({user:usu,grupo:grupo}),
       success:function(result){
         console.log(result);
-        // if(result==true){location.reload();}else{alert(result)}
+        if(result==true){location.reload();}else{alert(result)}
+      },
+      error:function(result){console.log(result);}
+    });
+  }
+}
+
+function eliminarGrupo(grupo){
+  if (confirm("¿Eliminar este grupo?")) {
+    $.ajax({
+      url:"eliminar-grupo",
+      type:"post",
+      dataType:"json",
+      data:({grupo:grupo}),
+      success:function(result){
+        console.log(result);
+        if(result==true){location.reload();}else{alert(result)}
       },
       error:function(result){console.log(result);}
     });
