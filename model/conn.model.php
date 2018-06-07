@@ -1,7 +1,7 @@
 <?php
     class DataBase{
         private static $dbhost = "localhost";
-        private static $dbname = "_biomatic";
+        private static $dbname = "biomatic_proyectos";
         private static $dbuser = "root";
         private static $dbpass = "";
         private static $dbstatus = null;

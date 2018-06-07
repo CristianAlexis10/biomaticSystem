@@ -7,6 +7,7 @@ $("#formLogin").submit(function(e){
       dataType:"json",
       data:({user:$("#email").val() , pass:$("#password").val()}),
       success:function(result){
+        console.log(result);
         if (result=="admin") {
           location.href="adminstracion";
         }else if(result=="user"){
