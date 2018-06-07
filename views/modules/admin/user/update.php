@@ -40,7 +40,7 @@
     </select>
   </div>
   </div>
-  <div class="wrap--form">
+  <div class="wrap--form big">
     <label for="estadoUserUp">Estado</label>
     <select id="estadoUserUp">
       <?php

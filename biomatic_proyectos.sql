@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2018 a las 18:08:39
+-- Tiempo de generación: 07-06-2018 a las 21:04:53
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -66,6 +66,12 @@ BEGIN
 UPDATE usuario SET usuario.usu_nombre = nom,usuario.usu_nombre2 = nom1,usuario.usu_apellido = ape,usuario.usu_apellido2 = ape2,usuario.usu_correo=correo WHERE usuario.usu_codigo = usu;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ExisteUsuarioEnGrupo` (`grupo` INT, `usu` INT)  SELECT COUNT(*) FROM usuarioxgrupo WHERE usuarioxgrupo.usu_codigo = usu AND usuarioxgrupo.gru_codigo=grupo$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresoDatos` (`nombre` VARCHAR(50), `fecha` DATE, `ficha` INT, `codigo` INT)  BEGIN
+INSERT INTO proyecto(pro_nombre, pro_inicio, pro_programa_formacion, tip_pro_codigo ) VALUES (nombre, fecha, ficha, codigo);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarAcceso` (`usuario` INT, `contrasena` VARCHAR(200))  BEGIN
 UPDATE acceso SET acc_contra=contrasena WHERE usu_codigo=usuario;
 END$$
@@ -116,7 +122,7 @@ CREATE TABLE `acceso` (
 
 INSERT INTO `acceso` (`acc_token`, `usu_codigo`, `acc_contra`, `acc_codigo`) VALUES
 ('KRve9vDsY32giKyDIix2kVOrJlJj1M9CMWpP73kUBQhklw64WO', 3, '$2y$10$Ez7jI37yOefFjDeFJb1T0.rRAtJsQBSE4nYOnj.k/HrPY3RDwcfCm', ''),
-('sfdksaldkjasd', 1, '$2y$10$qTD5VQmm/NYFKA6TeP0Yi.NCqBKGpXCCEFmr8hQcWSNHx.KBUaUie', '');
+('sfdksaldkjasd', 1, '$2y$10$BMeluiI3dxIofFc3bjHnQ.hIWB10Gad1Gf3IdqGft9e68a0EonaTG', '');
 
 -- --------------------------------------------------------
 
@@ -201,7 +207,8 @@ CREATE TABLE `proyecto` (
 --
 
 INSERT INTO `proyecto` (`pro_codigo`, `pro_nombre`, `pro_inicio`, `pro_programa_formacion`, `tip_pro_codigo`, `pro_serial`) VALUES
-(1, 'Software', '2018-06-05', 1, 1, 'aaa-aaa');
+(1, 'Software', '2018-06-05', 1, 1, 'aaa-aaa'),
+(6, 'ffff', '0000-00-00', 1, 1, '');
 
 -- --------------------------------------------------------
 
@@ -289,7 +296,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usu_codigo`, `usu_nombre`, `usu_nombre2`, `usu_apellido`, `usu_apellido2`, `usu_correo`, `rol_id`, `usu_estado`) VALUES
-(1, 'Evelinn', 's', 'lopera', '', 'eve@gmail.com', 1, 'Inactivar'),
+(1, 'Evelinn', 's', 'lopera', '', 'eve@gmail.com', 1, 'Activo'),
 (3, 'evelin', '213123', 'loperaa', '213', 'ddd@gmail.com', 1, 'Activo');
 
 -- --------------------------------------------------------
@@ -410,7 +417,7 @@ ALTER TABLE `programa_formacion`
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_archivo`

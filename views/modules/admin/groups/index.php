@@ -24,9 +24,9 @@
             <td><?php echo $row['gru_nombre'] ;?></td>
             <td><?php echo $row['gru_descripcion'] ;?></td>
             <td><?php echo $row['gru_fecha_resgistro'] ;?></td>
-            <td>
-              <a href="ver-grupo-<?php echo $row['gru_codigo'] ?>">Ver</a>
-              <a href="#" onclick="eliminarGrupo(<?php echo $row['gru_codigo'] ?>)">Eliminar</a> 
+            <td class="actions">
+              <a href="ver-grupo-<?php echo $row['gru_codigo'] ?>"><i class="fas fa-share-square"></i></a>
+              <a href="#" onclick="eliminarGrupo(<?php echo $row['gru_codigo'] ?>)"><i class="fas fa-trash-alt"></i></a>
             </td>
           </tr>
       <?php $i++; }?>

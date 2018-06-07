@@ -20,17 +20,16 @@
     <input type="text" id="SlastnameUserUp" value="<?php echo $data['usu_apellido2']?>">
   </div>
   </div>
-  <div class="wrap--two">
-    <div class="wrap--form">
+  <div class="wrap--form big">
     <label for="emailUserUp">email</label>
     <input type="email" id="emailUserUp" value="<?php echo $data['usu_correo']?>">
   </div>
-  </div>
+
   <input type="submit" value="Modificar" class="btn--form">
 </form>
 <h1 class="title">editar contraseña</h1>
 <form class="form" id="updatePass">
-  <div class="wrap--form">
+  <div class="wrap--form big">
     <label for="passActual">Contraseña Actual:</label>
     <input type="password" id="passActual" >
   </div>
