@@ -18,9 +18,8 @@ class UserController{
       header("Location: inicio");
     }
   }
-  function newUser(){
-    $data = $_POST['data'];
-    $pass = $_POST['pass'];
+  function createUser(){
+    $data = $_POST['user'];
     $data[] = "Activo";
     $i = 0;
     foreach ($data as $input) {
@@ -40,15 +39,23 @@ class UserController{
         $i++;
     }
     if ($this->doizer->validateEmail($data[4])==true) {
-        if (is_array($this->doizer->validateSecurityPassword($pass))) {
-          $result = $master->procedure->NPR("crearUsuario",$data);
+      $password = $this->doizer->validateSecurityPassword($data[5]);
+        if (is_array($password)) {
+          $result = $this->master->procedure->NRP("crearUsuario",$data);
           if ($result==1) {
-            echo json_encode(true);
+            $token = $this->doizer->randAlphanum(50);
+            $data = $this->master->selectBy("usuario",array("usu_correo",$data[4]));
+            $result = $this->master->procedure->NPR("crearAcceso",array($token,$data['usu_codigo'],$password[1]));
+            if ($result==1) {
+              echo json_encode(true);
+            }else{
+              echo json_encode("ocurrio un error al registar acceso: ".$this->doizer->knowError($result));
+            }
           }else{
-            echo json_encode("ocurrio un error al registar usuario".$this->doizer->knowError($result));
+            echo json_encode("ocurrio un error al registar usuario: ".$this->doizer->knowError($result));
           }
         }else{
-          echo json_encode("La contraseña no  cumple con los requisitos.");
+          echo json_encode("La contraseña no  cumple con los requisitos: ".$password);
         }
     }else{
       echo json_encode("Formato del correo no valido.");

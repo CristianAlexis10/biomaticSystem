@@ -7,3 +7,4 @@ RewriteRule ^adminstracion$ index.php?c=admin
 RewriteRule ^mi-perfil$ index.php?c=views&a=profileAdmin
 RewriteRule ^gestion-grupos$ index.php?c=views&a=groups
 RewriteRule ^gestion-proyectos$ index.php?c=views&a=projects
+RewriteRule ^crear-usuario$ index.php?c=user&a=createUser
