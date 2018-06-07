@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2018 a las 16:32:45
--- Versión del servidor: 10.1.8-MariaDB
--- Versión de PHP: 5.6.14
+-- Tiempo de generación: 07-06-2018 a las 18:08:39
+-- Versión del servidor: 10.1.32-MariaDB
+-- Versión de PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -59,9 +61,13 @@ BEGIN
 INSERT INTO usuarioxgrupo (gru_codigo,usu_codigo,fecha_ingreso) VALUES (grupo,usu,fecha);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `editarPerfil` (IN `usu` INT, IN `nom` VARCHAR(40), IN `nom1` VARCHAR(40), IN `ape` VARCHAR(40), IN `ape2` INT(40), IN `correo` VARCHAR(100))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `editarPerfil` (IN `usu` INT, IN `nom` VARCHAR(40), IN `nom1` VARCHAR(40), IN `ape` VARCHAR(40), IN `ape2` VARCHAR(40), IN `correo` VARCHAR(100))  NO SQL
 BEGIN 
 UPDATE usuario SET usuario.usu_nombre = nom,usuario.usu_nombre2 = nom1,usuario.usu_apellido = ape,usuario.usu_apellido2 = ape2,usuario.usu_correo=correo WHERE usuario.usu_codigo = usu;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarAcceso` (`usuario` INT, `contrasena` VARCHAR(200))  BEGIN
+UPDATE acceso SET acc_contra=contrasena WHERE usu_codigo=usuario;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarTodoUsuario` (IN `nom` VARCHAR(50), IN `nom2` VARCHAR(50), IN `ape1` VARCHAR(50), IN `ape2` VARCHAR(50), IN `correo` VARCHAR(100), IN `rol` INT, IN `estado` VARCHAR(20), IN `usu` INT)  NO SQL
@@ -109,7 +115,7 @@ CREATE TABLE `acceso` (
 --
 
 INSERT INTO `acceso` (`acc_token`, `usu_codigo`, `acc_contra`, `acc_codigo`) VALUES
-('KRve9vDsY32giKyDIix2kVOrJlJj1M9CMWpP73kUBQhklw64WO', 3, '$2y$10$EKHOkttu4djS4wuxW6RkeeS0.5zHN8b6HyHjAjEQqALriknQoKypK', ''),
+('KRve9vDsY32giKyDIix2kVOrJlJj1M9CMWpP73kUBQhklw64WO', 3, '$2y$10$Ez7jI37yOefFjDeFJb1T0.rRAtJsQBSE4nYOnj.k/HrPY3RDwcfCm', ''),
 ('sfdksaldkjasd', 1, '$2y$10$qTD5VQmm/NYFKA6TeP0Yi.NCqBKGpXCCEFmr8hQcWSNHx.KBUaUie', '');
 
 -- --------------------------------------------------------
@@ -164,15 +170,16 @@ INSERT INTO `grupos` (`gru_codigo`, `gru_nombre`, `gru_descripcion`, `gru_fecha_
 CREATE TABLE `programa_formacion` (
   `prog_codigo` int(11) NOT NULL,
   `porg_nombre` varchar(130) NOT NULL,
-  `prog_siglas` varchar(10) NOT NULL
+  `prog_siglas` varchar(10) NOT NULL,
+  `id_ficha` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `programa_formacion`
 --
 
-INSERT INTO `programa_formacion` (`prog_codigo`, `porg_nombre`, `prog_siglas`) VALUES
-(1, 'Analisis y desarrollo de sistemas de informacion', 'ADSI');
+INSERT INTO `programa_formacion` (`prog_codigo`, `porg_nombre`, `prog_siglas`, `id_ficha`) VALUES
+(1, 'Analisis y desarrollo de sistemas de informacion', 'ADSI', NULL);
 
 -- --------------------------------------------------------
 
@@ -386,36 +393,43 @@ ALTER TABLE `usuarioxgrupo`
 --
 ALTER TABLE `archivos`
   MODIFY `arc_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
   MODIFY `gru_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `programa_formacion`
 --
 ALTER TABLE `programa_formacion`
   MODIFY `prog_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
   MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `tipo_archivo`
 --
 ALTER TABLE `tipo_archivo`
   MODIFY `tip_arc_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT de la tabla `tipo_proyecto`
 --
 ALTER TABLE `tipo_proyecto`
   MODIFY `tip_pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `usu_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -453,6 +467,7 @@ ALTER TABLE `proyectoxgrupo`
 ALTER TABLE `usuarioxgrupo`
   ADD CONSTRAINT `usuarioxgrupo_ibfk_1` FOREIGN KEY (`usu_codigo`) REFERENCES `usuario` (`usu_codigo`) ON UPDATE CASCADE,
   ADD CONSTRAINT `usuarioxgrupo_ibfk_2` FOREIGN KEY (`gru_codigo`) REFERENCES `grupos` (`gru_codigo`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
