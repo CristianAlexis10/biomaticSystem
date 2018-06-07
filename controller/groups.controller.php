@@ -44,5 +44,9 @@ class GroupsController{
       echo json_encode($this->doizer->knowError($result));
     }
   }
+  function finalizar(){
+    unset($_SESSION['new_grup']);
+    header("Location: gestion-grupos");
+  }
 }
 ?>

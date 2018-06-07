@@ -8,6 +8,7 @@
     <table class="datatable" id="tableUser">
       <thead>
         <tr>
+          <th>Nº</th>
           <th>nombre</th>
           <th>descripcion</th>
           <th>fecha de registro</th>
@@ -15,12 +16,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>cosita</td>
-          <td>lopera</td>
-          <td>eve@gmail.com</td>
-          <td>x x </td>
-        </tr>
+        <?php
+          $i = 1;
+         foreach ($this->master->selectAll("grupos") as $row) {?>
+          <tr>
+            <td><?php echo $i;?></td>
+            <td><?php echo $row['gru_nombre'] ;?></td>
+            <td><?php echo $row['gru_descripcion'] ;?></td>
+            <td><?php echo $row['gru_fecha_resgistro'] ;?></td>
+            <td>
+              <a href="ver-grupo-<?php echo $row['gru_codigo'] ?>">Ver</a>
+              <a href="#" onclick="eliminarGrupo(<?php echo $row['gru_codigo'] ?>)">Eliminar</a> 
+            </td>
+          </tr>
+      <?php $i++; }?>
       </tbody>
     </table>
   </div>
