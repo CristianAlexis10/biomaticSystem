@@ -28,5 +28,7 @@ $("#formLogin").submit(function(e){
 });
 
 $( function() {
-    $( "#tabs" ).tabs();
-  });
+  $("#tabs").tabs();
+});
+
+$('#tableUser').DataTable();
