@@ -44,12 +44,12 @@
     <label for="estadoUserUp">Estado</label>
     <select id="estadoUserUp">
       <?php
-      if ($data['usu_estado']=="Activar") {
-        echo '<option value="Activar" selected>Activo</option>';
-        echo '<option value="Inactivar">Inactivo</option>';
+      if ($data['usu_estado']=="Activo") {
+        echo '<option value="Activo" selected>Activo</option>';
+        echo '<option value="Inactivo">Inactivo</option>';
       }else{
-        echo '<option value="Activar">Activo</option>';
-        echo '<option value="Inactivar" selected>Inactivo</option>';
+        echo '<option value="Activo">Activo</option>';
+        echo '<option value="Inactivo" selected>Inactivo</option>';
       }
       ?>
     </select>

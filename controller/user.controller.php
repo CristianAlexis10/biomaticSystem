@@ -131,7 +131,7 @@ class UserController{
   function changeStatus(){
     $user = $_POST['user'];
     $estado = $_POST['estado'];
-    $result = $this->master->procedure->NPR("cambiarEstadoUsuario",array($user,$estado));
+    $result = $this->master->procedure->NRP("cambiarEstadoUsuario",array($user,$estado));
     if ($result==1) {
       echo json_encode(true);
     }else{
@@ -158,5 +158,6 @@ if (password_verify($data[0],$dataReal['acc_contra'])) {
 }
 
   }
+
 }
 ?>

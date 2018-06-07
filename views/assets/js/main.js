@@ -173,7 +173,22 @@ $("#updatePass").submit(function(e){
 
   }
 });
-
+//cambiar estado
+function cambiarEstado(user,est){
+  console.log(user,est);
+  if (confirm("¿Realizar esta acción?")) {
+    $.ajax({
+      url:"cambiar-estado-usuario",
+      type:"post",
+      dataType:"json",
+      data:({user:user,estado:est}),
+      success:function(result){
+        if(result==true){location.reload();}else{alert(result)}
+      },
+      error:function(result){console.log(result);}
+    });
+  }
+}
 $( function() {
   $("#tabs").tabs();
 });

@@ -26,9 +26,9 @@
               <td>
                 <a href="editar-usuario-<?php echo $row['usu_codigo']?>">Editar</a>
                 <?php if ($row['usu_estado']=="Activo") { ?>
-                    <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,2)">Inactivar</a>
+                    <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,'Inactivo')">Inactivar</a>
                 <?php }else{ ?>
-                    <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,1)">Activo</a>
+                    <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,'Activo')">Activar</a>
                   <?php } ?>
               </td>
             </tr>

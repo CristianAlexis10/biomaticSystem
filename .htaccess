@@ -13,3 +13,4 @@ RewriteRule ^editar-usuario-(\w+)$ index.php?c=views&a=viewUpdateUser&data=$1
 RewriteRule ^modificar-usuario$ index.php?c=user&a=update
 RewriteRule ^modificar-perfil$ index.php?c=user&a=updateProfile
 RewriteRule ^modificar-contrasena$ index.php?c=user&a=updatePassword
+RewriteRule ^cambiar-estado-usuario$ index.php?c=user&a=changeStatus
