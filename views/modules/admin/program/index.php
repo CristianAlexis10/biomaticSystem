@@ -1,26 +1,22 @@
-<h1 class="title">gestionar proyectos</h1>
+<h1 class="title">programas de formación</h1>
 <div id="tabs">
   <ul>
-    <li><a href="#tabs-1">proyectos</a></li>
-    <li><a href="#tabs-2">Crear proyecto</a></li>
+    <li><a href="#tabs-1">programas de formacion</a></li>
+    <li><a href="#tabs-2">Crear programa </a></li>
   </ul>
   <div id="tabs-1">
     <table class="datatable" id="tableUser">
       <thead>
         <tr>
           <th>nombre</th>
-          <th>fecha inicio</th>
-          <th>programa de formacion</th>
-          <th>codigo</th>
+          <th>siglas</th>
           <th>acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>cosita</td>
-          <td>mañana</td>
           <td>analisis y desarrollo de los sistemas de informaciom</td>
-          <td>no se que tan</td>
+          <td>ADSI</td>
           <td>x x </td>
         </tr>
       </tbody>

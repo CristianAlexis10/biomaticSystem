@@ -1,9 +1,11 @@
 *{margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; font-family: sans-serif;}
+
 .navigator{
   width: 250px;
   position: fixed;
   height: 100vh;
   background:#242931;
+  color: white
 }
 .navigator--profile{
   display: flex;
@@ -13,14 +15,15 @@
 }
 .navigator img{width: 150px;}
 .navitador--items ul li{
-  padding: 15px;
+  padding: 20px;
   text-transform: capitalize;
   cursor: pointer;
 }
 .navitador--items ul li:hover{
-  border-left: 5px solid #248275;
+  border-left: 5px solid #59b547;
   box-shadow: 4px 4px 18px 0px rgba(0,0,0,.3);
 }
+.navitador--items a{color: white; padding: 5px 100px 5px 5px}
 .wrap--content{width: 100%}
 .max--content{margin-left: 250px; padding: 30px;}
 .menu--top{
