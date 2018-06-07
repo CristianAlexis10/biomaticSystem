@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="views/assets/css/login.css">
   </head>
   <body>
-    <div class="container--modal">
+    <div id="loginModal">
+      <div class="container--modal">
+        <span>&times;</span>
       <img src="views/assets/image/logo.png" alt="logo">
       <form  id="formLogin">
         <div class="form--group">
@@ -22,7 +24,26 @@
         </div>
       </form>
     </div>
-    <script src="views/assets/lib/jquery.js"> </script>
-    <script src="views/assets/js/main.js"> </script>
+    </div>
+    <section class="section one">
+      <div class="one--content">
+        <img src="views/assets/image/logo2.1.png" alt="logo">
+        <h2>Haz parte de nuestro grupo de</h2>
+        <h1>investigadores.</h1>
+        <button type="button" name="button" id="loginBtn">iniciar sesion</button>
+      </div>
+    </section>
+    <section class="section two">
+
+    </section>
+    <!-- <script src="views/assets/lib/jquery.js"> </script>
+    <script src="views/assets/js/main.js"></script> -->
+    <script type="text/javascript">
+      var modal = document.getElementById('loginModal');
+      var openModal = document.getElementById('loginBtn');
+      openModal.onclick = function() {
+        modal.style.display = "flex";
+      }
+    </script>
   </body>
 </html>
