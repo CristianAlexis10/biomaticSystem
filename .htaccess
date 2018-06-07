@@ -2,5 +2,5 @@ RewriteEngine On
 RewriteRule ^inicio$ index.php?c=views
 RewriteRule ^finalizar$ index.php?c=auth&a=logOut
 RewriteRule ^validar-login$ index.php?c=auth&a=logIn
-RewriteRule ^gesition.usuarios$ index.php?c=views&a=users
-RewriteRule adminstracion$ index.php?c=admin
+RewriteRule ^gesition-usuarios$ index.php?c=views&a=users
+RewriteRule ^adminstracion$ index.php?c=admin
