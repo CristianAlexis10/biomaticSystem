@@ -26,3 +26,7 @@ $("#formLogin").submit(function(e){
     setTimeout(function(){$("div.message").remove();},4000);
   }
 });
+
+$( function() {
+    $( "#tabs" ).tabs();
+  });

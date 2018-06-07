@@ -4,7 +4,7 @@
   </div>
   <div class="navitador--items">
     <ul>
-      <li><a href="gestion-usuarios">usuarios</a></li>
+      <li><a href="gesition-usuarios">usuarios</a></li>
       <li>grupos</li>
       <li>proyectos</li>
     </ul>
