@@ -6,8 +6,7 @@ class ExportController{
   }
   function projects(){
   $result = $this->master->procedure->NPRAll("saberProyectosEX");
-  print_r($result);
-  // echo $_POST['parametro1'];
+  echo json_encode($result);
 }
 }
 ?>
