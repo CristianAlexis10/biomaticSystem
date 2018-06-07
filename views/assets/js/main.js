@@ -1,6 +1,6 @@
 $("#formLogin").submit(function(e){
   e.preventeDefault();
-  if ($("#email").val() != "" && $("#password").val() != "" && $("#email").val() != " " $("#password").val() != " ") {
+  if ($("#email").val() != "" && $("#password").val() != "" && $("#email").val() != " " $("#password").val() != " " {
     $.ajax({
       url:"validar-login",
       type:"post",
