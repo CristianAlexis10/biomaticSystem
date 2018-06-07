@@ -41,7 +41,23 @@
       <div class="wrap--two">
         <div class="wrap--form">
         <label for="fichaProject">ficha:</label>
-        <input type="text" id="fichaProject">
+        <select  id="fichaProject" >
+            <?php
+              foreach ($this->master->selectAll('programa_formacion') as $row) {
+                echo "<option value='".$row['prog_codigo']."'>".$row['porg_nombre']."</option>";
+              }
+            ?>
+        </select>
+      </div>
+        <div class="wrap--form">
+        <label for="fichaProject">Tipo:</label>
+        <select  id="tipoPro" >
+            <?php
+              foreach ($this->master->selectAll('tipo_proyecto') as $row) {
+                echo "<option value='".$row['tip_pro_codigo']."'>".utf8_encode($row['tip_pro_nombre'])."</option>";
+              }
+            ?>
+        </select>
       </div>
       </div>
       <input type="submit" value="registrar" class="btn--form">

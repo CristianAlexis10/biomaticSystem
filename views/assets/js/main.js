@@ -212,6 +212,7 @@ $("#createProject").submit(function(e){
       data.push($("#nameProject").val());
       data.push($("#dateProject").val());
       data.push($("#fichaProject").val());
+      data.push($("#tipoPro").val());
         console.log(data);
         $.ajax({
           url:"crear-proyecto",

@@ -7,6 +7,8 @@
 	 		$this->doizer = new DoizerController;
 	 	}
 		function create(){
+			$data = $_POST['data'];
+			$i=0;
 			foreach ($data as $input) {
 					if ($data[$i]=='') {
 						echo json_encode('Campos vacios');
@@ -25,6 +27,12 @@
 			}
 			$serial_part = explode("-",$data[1]);
 			$serial = "BIO-".$this->doizer->randAlphanum(3)."-".$serial_part[0];
+			$result = $this->master->procedure->NRP("crearProyecto",array($data[0],$data[1],$data[2],$data[3],$serial));
+			if ($result==1) {
+				echo json_encode($result);
+			}else{
+				echo json_encode($this->doizer->knowError($result));
+			}
 		}
 	}
 ?>
