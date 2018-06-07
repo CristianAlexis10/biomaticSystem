@@ -11,17 +11,22 @@
           <th>nombre</th>
           <th>fecha inicio</th>
           <th>programa de formacion</th>
+          <th>Tipo</th>
           <th>codigo</th>
           <th>acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>cosita</td>
-          <td>mañana</td>
-          <td>analisis y desarrollo de los sistemas de informaciom</td>
-          <td>no se que tan</td>
-          <td>x x </td>
+        <?php
+          foreach ($this->master->procedure->NPRAll("saberProyectos") as $row) {?>
+            <tr>
+              <td><?php echo $row['pro_nombre']?></td>
+              <td><?php echo $row['pro_inicio']?></td>
+              <td><?php echo $row['prog_siglas']?></td>
+              <td><?php echo utf8_encode($row['tip_pro_nombre'])?></td>
+              <td><?php echo $row['pro_serial']?></td>
+              <td>x x </td>
+          <?php } ?>
         </tr>
       </tbody>
     </table>
