@@ -13,12 +13,12 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($this->master->procedure->PRByAll("saberIntegrantesGrupos",$datagrupo['gru_codigo']) as $row) {?>
+      <?php foreach ($this->master->procedure->PRByAll("saberIntegrantesGrupos",array($datagrupo['gru_codigo'])) as $row) {?>
           <tr>
-            <td>evelin</td>
-            <td>lopera</td>
-            <td>nose</td>
-            <td>nose</td>
+            <td><?php echo $row['usu_nombre']?></td>
+            <td><?php echo $row['usu_apellido']?></td>
+            <td><?php echo $row['usu_correo']?></td>
+            <td><?php echo $row['fecha_ingreso']?></td>
           </tr>
       <?php } ?>
     </tbody>
@@ -30,17 +30,20 @@
     <thead>
       <tr>
         <th>nombre</th>
-        <th>descripcion</th>
-        <th>Estado</th>
+        <th>Tipo</th>
+        <th>Fecha De inicio</th>
+        <th>Serial</th>
+        <th>ver</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($this->master->procedure->PRByAll("saberProyectosDeGrupo",$datagrupo['gru_codigo']) as $row) {?>
+      <?php foreach ($this->master->procedure->PRByAll("saberProyectosDeGrupo",array($datagrupo['gru_codigo'])) as $row) {?>
           <tr>
-            <td>evelin</td>
-            <td>lopera</td>
-            <td>nose</td>
-            <td>nose</td>
+            <td><?php echo $row['pro_nombre']?></td>
+            <td><?php echo utf8_encode($row['tip_pro_nombre'])?></td>
+            <td><?php echo $row['pro_inicio']?></td>
+            <td><?php echo $row['pro_serial']?></td>
+            <td> <a href="ver-proyecto-<?php echo $row['gru_codigo']?>">ver</a> </td>
           </tr>
       <?php } ?>
     </tbody>
