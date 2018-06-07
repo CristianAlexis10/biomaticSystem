@@ -25,7 +25,7 @@
               <td><?php echo $row['prog_siglas']?></td>
               <td><?php echo utf8_encode($row['tip_pro_nombre'])?></td>
               <td><?php echo $row['pro_serial']?></td>
-              <td>x x </td>
+              <td> <a href="ver-proyecto-<?php echo $row['pro_codigo']?>">Ver</a> </td>
           <?php } ?>
         </tr>
       </tbody>

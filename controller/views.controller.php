@@ -83,6 +83,16 @@
 				header("Location: inicio");
 			}
 		}
+		function detailProyect(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require_once "views/include/scope.header.php";
+				require_once "views/modules/admin/projects/detail.php";
+				require_once "views/include/scope.footer.php";
+			}else{
+				session_destroy();
+				header("Location: inicio");
+			}
+		}
 		function program(){
 			if (isset($_SESSION['USER']['ROL'])) {
 				require_once "views/include/scope.header.php";

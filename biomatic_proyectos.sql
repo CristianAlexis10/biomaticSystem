@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2018 a las 21:40:04
+-- Tiempo de generación: 07-06-2018 a las 22:33:24
 -- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -44,9 +44,19 @@ BEGIN
 INSERT INTO acceso (acc_token,usu_codigo,acc_contra) VALUES (token,usu,contra);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearFicha` (IN `nom` VARCHAR(30), IN `sig` VARCHAR(20), IN `ficha` VARCHAR(20))  NO SQL
+BEGIN 
+INSERT INTO programa_formacion (porg_nombre,prog_siglas,id_ficha) VALUES (nom,sig,ficha);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `crearGrupo` (IN `nombre` VARCHAR(50), IN `des` LONGTEXT, IN `fecha` DATE)  NO SQL
 BEGIN 
 INSERT INTO grupos (gru_nombre,gru_descripcion,gru_fecha_resgistro) VALUES (nombre,des,fecha);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearProyecto` (IN `nom` VARCHAR(50), IN `fecha` DATE, IN `ficha` INT, IN `tipo` INT, IN `ser` VARCHAR(30))  NO SQL
+BEGIN 
+INSERT INTO proyecto(pro_nombre,pro_inicio,pro_programa_formacion,tip_pro_codigo,pro_serial) VALUES (nom,fecha,ficha,tipo,ser);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `crearUsuario` (IN `nom1` VARCHAR(50), IN `nom2` VARCHAR(50), IN `ape1` VARCHAR(50), IN `ape2` VARCHAR(50), IN `correo` VARCHAR(100), IN `rol` INT, IN `estado` VARCHAR(20))  NO SQL
@@ -82,6 +92,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `saberIntegrantesGrupos` (IN `grupo` INT)  NO SQL
 BEGIN 
 SELECT * FROM usuarioxgrupo u INNER JOIN usuario usu ON u.usu_codigo = usu.usu_codigo WHERE u.gru_codigo = grupo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saberProyectos` ()  NO SQL
+BEGIN 
+SELECT * FROM proyecto INNER JOIN  programa_formacion ON proyecto.pro_programa_formacion = programa_formacion.prog_codigo INNER JOIN tipo_proyecto ON proyecto.tip_pro_codigo = tipo_proyecto.tip_pro_codigo ;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `saberProyectosDeGrupo` (IN `grupo` INT)  NO SQL
@@ -216,7 +231,7 @@ CREATE TABLE `proyecto` (
 
 INSERT INTO `proyecto` (`pro_codigo`, `pro_nombre`, `pro_inicio`, `pro_programa_formacion`, `tip_pro_codigo`, `pro_serial`) VALUES
 (1, 'Software', '2018-06-05', 1, 1, 'aaa-aaa'),
-(6, 'ffff', '0000-00-00', 1, 1, '');
+(16, 'wqe', '2018-06-06', 1, 1, 'BIO-9d6-2018');
 
 -- --------------------------------------------------------
 
@@ -417,12 +432,12 @@ ALTER TABLE `grupos`
 -- AUTO_INCREMENT de la tabla `programa_formacion`
 --
 ALTER TABLE `programa_formacion`
-  MODIFY `prog_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prog_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `tipo_archivo`
 --
