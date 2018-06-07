@@ -23,7 +23,7 @@
               <td><?php echo $row['usu_apellido']?></td>
               <td><?php echo $row['usu_correo']?></td>
               <td><?php echo $row['usu_estado']?></td>
-              <td>
+              <td class="actions">
                 <a href="editar-usuario-<?php echo $row['usu_codigo']?>"><i class="fas fa-user-edit"></i></a>
                 <?php if ($row['usu_estado']=="Activo") { ?>
                     <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,'Inactivo')">Inactivar</a>
