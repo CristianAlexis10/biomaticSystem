@@ -5,8 +5,8 @@
   <div class="navitador--items">
     <ul>
       <li><a href="gesition-usuarios">usuarios</a></li>
-      <li>grupos</li>
-      <li>proyectos</li>
+      <li><a href="gestion-grupos">grupos</a></li>
+      <li><a href="gestion-proyectos">proyectos</a></li>
     </ul>
   </div>
 </div>

@@ -3,7 +3,7 @@
   width: 250px;
   position: fixed;
   height: 100vh;
-  border-right: 1px solid #e9e9e9;
+  background:#242931;
 }
 .navigator--profile{
   display: flex;
@@ -26,7 +26,7 @@
 .menu--top{
   width: 100%;
   height: 50px;
-  background: #248275;
+  background: #59b547;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -48,15 +48,38 @@
 
 /*datatable*/
 
-.ui-widget.ui-widget-content{width: 90%;margin: 0 auto;}
+.ui-widget.ui-widget-content{width: 95%;margin: 0 auto;}
 .ui-tabs .ui-tabs-nav{display: flex; justify-content: center; margin: 40px}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor{
   padding: 10px ;
   width: 200px;
   border: none;
-  background: orange;
   outline: none;
-
  }
+ table.dataTable.no-footer{border: none}
 .ui-widget-content{border: none!important}
 .ui-widget-header{background: white; border: none;}
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter{
+  margin-bottom: 40px;
+}
+table.dataTable thead tr, table.dataTable tbody tr{
+  border: 1px solid #111;
+  padding: 10px;
+}
+/* inputs */
+.form{width: 100%}
+.wrap--two{display: flex;}
+.wrap--form{display: flex; flex-direction: column; width: 90%; margin-top: 20px}
+.wrap--form input, .wrap--form select{
+  outline: none;
+  padding: 10px;
+  width: 90%
+}
+.btn--form{
+  margin-top: 20px;
+  padding: 15px;
+  outline: none;
+  color: white;
+  background: #59b547;
+  border: none
+}
