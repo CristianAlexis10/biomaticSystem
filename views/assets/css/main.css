@@ -45,3 +45,8 @@
   font-size: 30px;
   text-transform: uppercase;
 }
+
+/*datatable*/
+
+.ui-widget.ui-widget-content{width: 90%;margin: 0 auto;}
+.ui-tabs .ui-tabs-nav{display: flex; justify-content: center;}

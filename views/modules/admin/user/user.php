@@ -1,3 +1,4 @@
+<h1 class="title">gestionar usuarios</h1>
 <div id="tabs">
   <ul>
     <li><a href="#tabs-1">usuarios</a></li>
@@ -43,16 +44,16 @@
       </div>
       <div class="wrap--form">
         <label for="emailUser">email</label>
-        <input type="text" id="emailUser">
+        <input type="email" id="emailUser">
       </div>
       <div class="wrap--form">
         <label for="passUser">contraseña</label>
-        <input type="text" id="passUser">
+        <input type="password" id="passUser">
       </div><div class="wrap--form">
         <label for="repPassUser">repetir contraseña</label>
-        <input type="text" id="repPassUser">
+        <input type="password" id="repPassUser">
       </div>
-      <input type="button" name="" value="registrar">
+      <input type="submit" name="" value="registrar">
     </form>
   </div>
 
