@@ -11,16 +11,28 @@
           <th>nombre</th>
           <th>apellido</th>
           <th>correo</th>
+          <th>estado</th>
           <th>acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>cosita</td>
-          <td>lopera</td>
-          <td>eve@gmail.com</td>
-          <td>x x </td>
-        </tr>
+        <?php
+          foreach ($this->master->selectAll("usuario") as $row) {?>
+            <tr>
+              <td><?php echo $row['usu_nombre']?></td>
+              <td><?php echo $row['usu_apellido']?></td>
+              <td><?php echo $row['usu_correo']?></td>
+              <td><?php echo $row['usu_estado']?></td>
+              <td>
+                <a href="editar-usuario-<?php echo $row['usu_codigo']?>">Editar</a>
+                <?php if ($row['usu_estado']=="Activo") { ?>
+                    <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,2)">Inactivar</a>
+                <?php }else{ ?>
+                    <a href="#" onclick="cambiarEstado(<?php echo $row['usu_codigo']?>,1)">Activo</a>
+                  <?php } ?>
+              </td>
+            </tr>
+          <?php } ?>
       </tbody>
     </table>
   </div>

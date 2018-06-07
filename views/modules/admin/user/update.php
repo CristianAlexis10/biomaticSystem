@@ -1,5 +1,5 @@
-<h1 class="title">editar mis datos</h1>
-<form id="updateProfile" class="form">
+<h1 class="title">editar  usuarios</h1>
+<form id="updateUser" class="form">
   <div class="wrap--two">
     <div class="wrap--form">
     <label for="nameUserUp">nombre:</label>
@@ -25,24 +25,34 @@
     <label for="emailUserUp">email</label>
     <input type="email" id="emailUserUp" value="<?php echo $data['usu_correo']?>">
   </div>
+    <div class="wrap--form">
+    <label for="rolUserUp">rol</label>
+    <select id="rolUserUp">
+      <?php
+        if ($data['rol_id']==1) {
+          echo '<option value="1" selected>administrador</option>';
+          echo '<option value="2">investigador</option>';
+        }else{
+          echo '<option value="1">administrador</option>';
+          echo '<option value="2" selected>investigador</option>';
+        }
+      ?>
+    </select>
+  </div>
+  </div>
+  <div class="wrap--form">
+    <label for="estadoUserUp">Estado</label>
+    <select id="estadoUserUp">
+      <?php
+      if ($data['usu_estado']=="Activar") {
+        echo '<option value="Activar" selected>Activo</option>';
+        echo '<option value="Inactivar">Inactivo</option>';
+      }else{
+        echo '<option value="Activar">Activo</option>';
+        echo '<option value="Inactivar" selected>Inactivo</option>';
+      }
+      ?>
+    </select>
   </div>
   <input type="submit" value="Modificar" class="btn--form">
-</form>
-<h1 class="title">editar contraseña</h1>
-<form class="form" id="updatePass">
-  <div class="wrap--form">
-    <label for="passActual">Contraseña Actual:</label>
-    <input type="password" id="passActual" >
-  </div>
-  <div class="wrap--two">
-    <div class="wrap--form">
-    <label for="passUser">contraseña</label>
-    <input type="password" id="passUser">
-  </div>
-    <div class="wrap--form">
-    <label for="repPassUser">repetir contraseña</label>
-    <input type="password" id="repPassUser">
-  </div>
-  </div>
-  <input type="submit" value="Modificar Contrañesa" class="btn--form">
 </form>

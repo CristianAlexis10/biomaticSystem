@@ -21,8 +21,21 @@
 		}
 		function profileAdmin(){
 			if (isset($_SESSION['USER']['ROL']) && $_SESSION['USER']['ROL'] == 1) {
+				$data = $this->master->selectBy("usuario",array("usu_codigo",$_SESSION['USER']['ID']));
 				require_once "views/include/scope.header.php";
 				require_once "views/modules/admin/profile.php";
+				require_once "views/include/scope.footer.php";
+			}else{
+				session_destroy();
+				header("Location: inicio");
+			}
+		}
+		function viewUpdateUser(){
+			if (isset($_SESSION['USER']['ROL']) && $_SESSION['USER']['ROL'] == 1) {
+				$data = $this->master->selectBy("usuario",array("usu_codigo",$_GET['data']));
+				$_SESSION['USER_UPDATE'] = $_GET['data'];
+				require_once "views/include/scope.header.php";
+				require_once "views/modules/admin/user/update.php";
 				require_once "views/include/scope.footer.php";
 			}else{
 				session_destroy();

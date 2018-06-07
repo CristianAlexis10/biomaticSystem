@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2018 a las 07:04:24
+-- Tiempo de generación: 07-06-2018 a las 16:32:45
 -- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -59,9 +59,19 @@ BEGIN
 INSERT INTO usuarioxgrupo (gru_codigo,usu_codigo,fecha_ingreso) VALUES (grupo,usu,fecha);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `editarPerfil` (IN `usu` INT, IN `nom` VARCHAR(40), IN `nom1` VARCHAR(40), IN `ape` VARCHAR(40), IN `ape2` INT(40), IN `correo` VARCHAR(100))  NO SQL
+BEGIN 
+UPDATE usuario SET usuario.usu_nombre = nom,usuario.usu_nombre2 = nom1,usuario.usu_apellido = ape,usuario.usu_apellido2 = ape2,usuario.usu_correo=correo WHERE usuario.usu_codigo = usu;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarTodoUsuario` (IN `nom` VARCHAR(50), IN `nom2` VARCHAR(50), IN `ape1` VARCHAR(50), IN `ape2` VARCHAR(50), IN `correo` VARCHAR(100), IN `rol` INT, IN `estado` VARCHAR(20), IN `usu` INT)  NO SQL
+BEGIN 
+UPDATE usuario SET usuario.usu_nombre = nom , usuario.usu_nombre2=nom2, usuario.usu_apellido = ape1 , usuario.usu_apellido2 = ape2, usuario.usu_correo =  correo , usuario.rol_id = rol , usuario.usu_estado = estado WHERE usuario.usu_codigo = usu;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `saberProyectosEX` ()  NO SQL
 BEGIN 
-SELECT proyecto.pro_nombre,proyecto.pro_serial FROM proyecto;
+SELECT proyecto.pro_nombre,proyecto.pro_serial,proyecto.pro_codigo FROM proyecto;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `saberTotalGrupos` ()  NO SQL
@@ -272,8 +282,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usu_codigo`, `usu_nombre`, `usu_nombre2`, `usu_apellido`, `usu_apellido2`, `usu_correo`, `rol_id`, `usu_estado`) VALUES
-(1, 'Evelin', NULL, 'lopera', NULL, 'eve@gmail.com', 1, 'Activo'),
-(3, 'y986896', '876786', '7868767', '78687', '6786@gmail.com', 1, 'Activo');
+(1, 'Evelinn', 's', 'lopera', '', 'eve@gmail.com', 1, 'Inactivar'),
+(3, 'evelin', '213123', 'loperaa', '213', 'ddd@gmail.com', 1, 'Activo');
 
 -- --------------------------------------------------------
 
