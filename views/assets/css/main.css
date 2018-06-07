@@ -59,6 +59,13 @@
   border: none;
   outline: none;
  }
+.ui-tabs .ui-tabs-nav li{
+  background: transparent;
+  border: 1px solid #59b547
+}
+.ui-tabs .ui-tabs-nav li:active{
+  
+}
  table.dataTable.no-footer{border: none}
 .ui-widget-content{border: none!important}
 .ui-widget-header{background: white; border: none;}

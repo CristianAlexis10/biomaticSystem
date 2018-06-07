@@ -44,6 +44,15 @@ class GroupsController{
       echo json_encode($this->doizer->knowError($result));
     }
   }
+  function delete(){
+    $grupo = $_POST['grupo'];
+    $result = $this->master->delete("grupos",array("gru_codigo",$grupo));
+    if ($result==1) {
+      echo json_encode(true);
+    }else{
+      echo json_encode($this->doizer->knowError($result));
+    }
+  }
   function finalizar(){
     unset($_SESSION['new_grup']);
     header("Location: gestion-grupos");

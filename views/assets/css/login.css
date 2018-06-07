@@ -95,11 +95,11 @@
   color: #9e9e9e;
 }
 .login--input:focus , .login--input:valid {
-  border-bottom: 1px solid #248275;
+  border-bottom: 1px solid #59b547;
 }
 
 .login--input:focus ~ label, .login--input:valid ~ label{
-  color: #248275;
+  color: #59b547;
   transform: translateY(-55px);
 }
 
@@ -107,6 +107,6 @@
   outline: none;
   border: none;
   padding: 10px;
-  background: #248275;
+  background: #59b547;
   color: white;
 }
