@@ -1,9 +1,13 @@
 *{margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif;}
+body{
+  background: url("../image/fondologin.jpg");
+}
 .container--modal{
   width: 500px;
   height: 500px;
-  box-shadow: 5px 5px 20px 2px #bbbbbb;
+  box-shadow: 5px 5px 20px 2px rgba(0,0,0,.6);
   position: absolute;
+  background: white;
   top: 0; left:0; right: 0; bottom: 0;
   margin: auto;
   display: flex;
