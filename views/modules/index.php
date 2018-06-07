@@ -22,8 +22,7 @@
         </div>
       </form>
     </div>
-    <script src="views/assets/js/main.js">
-
-    </script>
+    <script src="views/assets/lib/jquery.js"> </script>
+    <script src="views/assets/js/main.js"> </script>
   </body>
 </html>
