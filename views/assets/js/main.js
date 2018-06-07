@@ -237,6 +237,39 @@ $("#createProject").submit(function(e){
       setTimeout(function(){$("div.message").remove();},4000);
     }
 });
+//craer ficha
+$("#createFicha").submit(function(e){
+  e.preventDefault();
+    if ($("#nameFicha").val() != ""  && $("#siglas").val()!="" && $("#fichaProject").val()!="" ) {
+      var data = [];
+      data.push($("#nameFicha").val());
+      data.push($("#siglas").val());
+      data.push($("#fichaProject").val());
+        console.log(data);
+        $.ajax({
+          url:"crear-ficha",
+          type:"post",
+          dataType:"json",
+          data:({data:data}),
+          success:function(result){
+            if (result==true) {
+              $("#createFicha")[0].reset();
+              location.reload();
+              console.log(result);
+            }else{
+              $("div.message").remove();
+              $("#createFicha").after("<div class='message'>"+result+"</div>");
+              setTimeout(function(){$("div.message").remove();},4000);
+            }
+          },
+          error:function(result){console.log(result);}
+        });
+    }else{
+      $("div.message").remove();
+      $("#createFicha").after("<div class='message'>Todos los campos son requeridos.</div>");
+      setTimeout(function(){$("div.message").remove();},4000);
+    }
+});
 //cambiar estado
 function cambiarEstado(user,est){
   console.log(user,est);
@@ -277,6 +310,21 @@ function eliminarGrupo(grupo){
       type:"post",
       dataType:"json",
       data:({grupo:grupo}),
+      success:function(result){
+        console.log(result);
+        if(result==true){location.reload();}else{alert(result)}
+      },
+      error:function(result){console.log(result);}
+    });
+  }
+}
+function eliminarFicha(ficha){
+  if (confirm("¿Eliminar esta ficha?")) {
+    $.ajax({
+      url:"eliminar-ficha",
+      type:"post",
+      dataType:"json",
+      data:({ficha:ficha}),
       success:function(result){
         console.log(result);
         if(result==true){location.reload();}else{alert(result)}

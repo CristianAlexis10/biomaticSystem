@@ -10,38 +10,41 @@
         <tr>
           <th>nombre</th>
           <th>siglas</th>
+          <th>Ficha</th>
           <th>acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>analisis y desarrollo de los sistemas de informaciom</td>
-          <td>ADSI</td>
-          <td>x x </td>
-        </tr>
+        <?php
+          foreach ($this->master->selectAll('programa_formacion') as $row) {?>
+              <tr>
+                <td><?php echo $row['porg_nombre'] ?></td>
+                <td><?php echo $row['prog_siglas'] ?></td>
+                <td><?php echo $row['id_ficha'] ?></td>
+                <td>
+                    <a href="#" onclick="eliminarFicha(<?php echo $row['prog_codigo']?>)"> Eliminar</a>
+                 </td>
+              </tr>
+          <?php } ?>
       </tbody>
     </table>
   </div>
   <div id="tabs-2">
-    <form id="createUser" class="form">
+    <form id="createFicha" class="form">
       <div class="wrap--two">
         <div class="wrap--form">
-        <label for="nameProject">nombre del projecto:</label>
-        <input type="text" id="nameProject">
+        <label for="nameProject">nombre del programa:</label>
+        <input type="text" id="nameFicha">
       </div>
         <div class="wrap--form">
-        <label for="dateProject">fecha inicio:</label>
-        <input type="date" id="dateProject">
+        <label for="dateProject">Siglas del programa:</label>
+        <input type="text" id="siglas">
       </div>
       </div>
       <div class="wrap--two">
         <div class="wrap--form">
-        <label for="fichaProject">ficha:</label>
+        <label for="fichaProject"> numero de ficha:</label>
         <input type="text" id="fichaProject">
-      </div>
-        <div class="wrap--form">
-        <label for="codeProject">codigo:</label>
-        <input type="text" id="codeProject">
       </div>
       </div>
       <input type="submit" value="registrar" class="btn--form">

@@ -21,3 +21,5 @@ RewriteRule ^finalizar-registro-grupo$ index.php?c=groups&a=finalizar
 RewriteRule ^eliminar-grupo$ index.php?c=groups&a=delete
 RewriteRule ^ver-grupo-(\w+)$ index.php?c=views&a=viewGroup&data=$1
 RewriteRule ^crear-proyecto$ index.php?c=projects&a=create
+RewriteRule ^crear-ficha$ index.php?c=ficha&a=create
+RewriteRule ^eliminar-ficha$ index.php?c=ficha&a=delete
