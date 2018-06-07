@@ -1,3 +1,4 @@
+<a href="finalizar-registro-grupo">Finalizar Registro</a>
 <table class="datatable" id="tableUser">
   <thead>
     <tr>
@@ -11,8 +12,8 @@
   <tbody>
     <?php
       foreach ($this->master->selectAll("usuario") as $row) {
-        $isset = $this->master->procedure->("ExisteUsuarioEnGrupo",array($_SESSION['new_grup'],$row['usu_codigo']));
-        if ($isset!=array()) {?>
+        $isset = $this->master->procedure->PRByAll("ExisteUsuarioEnGrupo",array($_SESSION['new_grup'],$row['usu_codigo']))[0];
+        if ($isset[0]==0 ){?>
           <tr>
             <td><?php echo $row['usu_nombre']?></td>
             <td><?php echo $row['usu_apellido']?></td>
