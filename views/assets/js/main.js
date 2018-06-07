@@ -173,6 +173,37 @@ $("#updatePass").submit(function(e){
 
   }
 });
+//craer grupo
+$("#createGroup").submit(function(e){
+  e.preventDefault();
+    if ($("#nameGroup").val() != ""  && $("#descGroup").val() ) {
+      var data = [];
+      data.push($("#nameGroup").val());
+      data.push($("#descGroup").val());
+        console.log(data);
+        $.ajax({
+          url:"crear-grupo",
+          type:"post",
+          dataType:"json",
+          data:({data:data}),
+          success:function(result){
+            if (result==true) {
+              $("#createGroup")[0].reset();
+              location.href = "asignar_integrantes" ;
+            }else{
+              $("div.message").remove();
+              $("#createGroup").after("<div class='message'>"+result+"</div>");
+              setTimeout(function(){$("div.message").remove();},4000);
+            }
+          },
+          error:function(result){console.log(result);}
+        });
+    }else{
+      $("div.message").remove();
+      $("#createGroup").after("<div class='message'>Todos los campos son requeridos.</div>");
+      setTimeout(function(){$("div.message").remove();},4000);
+    }
+});
 //cambiar estado
 function cambiarEstado(user,est){
   console.log(user,est);
@@ -184,6 +215,22 @@ function cambiarEstado(user,est){
       data:({user:user,estado:est}),
       success:function(result){
         if(result==true){location.reload();}else{alert(result)}
+      },
+      error:function(result){console.log(result);}
+    });
+  }
+}
+
+function asignar_grupo(usu,grupo){
+  if (confirm("¿Agregar como colaborador?")) {
+    $.ajax({
+      url:"agregar_colaborador",
+      type:"post",
+      dataType:"json",
+      data:({user:usu,grupo:grupo}),
+      success:function(result){
+        console.log(result);
+        // if(result==true){location.reload();}else{alert(result)}
       },
       error:function(result){console.log(result);}
     });

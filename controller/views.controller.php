@@ -52,6 +52,16 @@
 				header("Location: inicio");
 			}
 		}
+		function collaborators(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require_once "views/include/scope.header.php";
+				require_once "views/modules/admin/groups/collaborators.php";
+				require_once "views/include/scope.footer.php";
+			}else{
+				session_destroy();
+				header("Location: inicio");
+			}
+		}
 		function projects(){
 			if (isset($_SESSION['USER']['ROL'])) {
 				require_once "views/include/scope.header.php";

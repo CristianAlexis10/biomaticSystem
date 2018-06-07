@@ -33,7 +33,7 @@
         </div>
         <div class="wrap--form">
         <label for="descGroup">descripcion</label>
-        <input type="text" id="descGroup">
+        <textarea id="descGroup"></textarea>
         </div>
       </div>
       <input type="submit" value="registrar" class="btn--form">

@@ -14,3 +14,6 @@ RewriteRule ^modificar-usuario$ index.php?c=user&a=update
 RewriteRule ^modificar-perfil$ index.php?c=user&a=updateProfile
 RewriteRule ^modificar-contrasena$ index.php?c=user&a=updatePassword
 RewriteRule ^cambiar-estado-usuario$ index.php?c=user&a=changeStatus
+RewriteRule ^crear-grupo$ index.php?c=groups&a=create
+RewriteRule ^asignar_integrantes$ index.php?c=views&a=collaborators
+RewriteRule ^agregar_colaborador$ index.php?c=groups&a=addCollaborators
