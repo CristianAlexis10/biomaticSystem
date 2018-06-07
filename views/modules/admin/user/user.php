@@ -49,8 +49,8 @@
       <div class="wrap--form">
         <label for="emailUser">email</label>
         <select class="wrap--form">
-          <option value="">administrador</option>
-          <option value="">investigador</option>
+          <option value="1">administrador</option>
+          <option value="2">investigador</option>
         </select>
       </div>
       <div class="wrap--form">
