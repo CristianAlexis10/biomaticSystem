@@ -4,3 +4,4 @@ RewriteRule ^finalizar$ index.php?c=auth&a=logOut
 RewriteRule ^validar-login$ index.php?c=auth&a=logIn
 RewriteRule ^gesition-usuarios$ index.php?c=views&a=users
 RewriteRule ^adminstracion$ index.php?c=admin
+RewriteRule ^mi-perfil$ index.php?c=views&a=profileAdmin
