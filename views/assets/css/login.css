@@ -16,12 +16,17 @@
 }
 .section.one h2{
   font-size: 70px;
+  transition: all .5s ease-in;
   font-weight: lighter;
+  animation: animated 2s;
  }
 .section.one h1{
   font-size: 70px;
+  font-weight: lighter;
   color: #59b547;
   margin-bottom: 50px;
+  transition: all .5s ease-in;
+  animation: animated 2s;
 }
 
 .section.one button{
@@ -79,11 +84,11 @@
 .form--group{
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .login--input{
   border: none;
-  background: #eee;
+  background: #d8d8d8;
   padding: 10px 0 ;
   outline: none;
   transition: all .5s ease-out;
@@ -109,4 +114,16 @@
   padding: 10px;
   background: #59b547;
   color: white;
+  cursor: pointer;
+}
+
+@keyframes animated  {
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  from{
+    opacity: 0;
+    transform: translateY(99px);
+  }
 }

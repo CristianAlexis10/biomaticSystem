@@ -13,11 +13,11 @@
       <form  id="formLogin">
         <div class="form--group">
           <input type="email" id="email" class="login--input" required>
-          <label for="email" class="login--label">correo:</label>
+          <label for="email" class="login--label">Correo:</label>
         </div>
         <div class="form--group">
           <input type="password" id="password" class="login--input" required>
-          <label for="password" class="login--label">contraseña:</label>
+          <label for="password" class="login--label">Contraseña:</label>
         </div>
         <div class="form--group">
           <input type="submit" value="ingresar" class="btn">
@@ -28,13 +28,10 @@
     <section class="section one">
       <div class="one--content">
         <img src="views/assets/image/logo2.1.png" alt="logo">
-        <h2>Haz parte de nuestro grupo de</h2>
+        <h2>Bienvenido a nuestro grupo de</h2>
         <h1>investigadores.</h1>
         <button type="button" name="button" id="loginBtn">iniciar sesion</button>
       </div>
-    </section>
-    <section class="section two">
-
     </section>
     <script src="views/assets/lib/jquery.js"></script>
     <script src="views/assets/js/main.js"></script>

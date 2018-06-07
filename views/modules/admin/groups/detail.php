@@ -2,9 +2,9 @@
 <p>fecha de creación: <?php echo $datagrupo['gru_fecha_resgistro'] ?> </p>
 <p>descripción del grupo: <?php echo $datagrupo['gru_descripcion'] ?> </p>
 <div class="content--miembro">
-  <p>miembros del grupo</p>
+  <p class="title--detail">miembros del grupo</p>
   <table class="table--detail">
-    <thead>
+    <thead class="header--detail">
       <tr>
         <th>nombre</th>
         <th>apellido</th>
@@ -25,9 +25,9 @@
   </table>
 </div>
 <div class="content--proyecto">
-  <p>proyectos asiganados</p>
+  <p class="title--detail">Proyectos asignados</p>
   <table class="table--detail">
-    <thead>
+    <thead class="header--detail">
       <tr>
         <th>nombre</th>
         <th>Tipo</th>

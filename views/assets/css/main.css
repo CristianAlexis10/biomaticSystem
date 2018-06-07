@@ -40,7 +40,6 @@
   padding: 15px;
   cursor: pointer;
 }
-
 .title{
   text-align: center;
   font-weight: lighter;
@@ -48,7 +47,19 @@
   font-size: 30px;
   text-transform: uppercase;
 }
-
+.table--detail{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  text-transform: capitalize;
+}
+.header--detail{background: #c4c4d0;}
+.table--detail td, .table--detail th{
+  border: 1px solid grey;
+  padding: 10px;
+}
+.content--miembro{margin: 50px 0}
+.title--detail{margin-bottom: 10px; font-size: 20px; text-transform: uppercase;}
 /*datatable*/
 .ui-tabs .ui-tabs-panel{padding: 0}
 .ui-widget.ui-widget-content{width: 95%;}
@@ -62,9 +73,7 @@
 .ui-tabs .ui-tabs-nav li{
   background: #59b547;
 }
-.ui-tabs .ui-tabs-nav li:active{
 
-}
  table.dataTable.no-footer{border: none}
 .ui-widget-content{border: none!important}
 .ui-widget-header{background: white; border: none;}
@@ -78,18 +87,23 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
 .actions{
   display: flex; justify-content: space-around; align-items: center;
 }
-
+.actions i{color: grey;}
+.actions i:hover{color:#59b547 }
 /* inputs */
 .form{width: 100%}
 .wrap--two{display: flex;}
 .wrap--form{display: flex; flex-direction: column; width: 90%; margin-top: 20px}
 .wrap--form input, .wrap--form select{
-  outline: none;
+  outline-color: #59b547;
+  border: 1px solid grey;
   padding: 10px;
   width: 90%
 }
+.wrap--form label{
+  color: grey
+}
 .wrap--form.big{width: 100%}
-.wrap--form.big input, .wrap--form.big select{width: 95%}
+.wrap--form.big input, .wrap--form.big select{width: 95%;}
 .btn--form{
   margin-top: 20px;
   padding: 15px;
