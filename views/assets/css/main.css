@@ -49,14 +49,14 @@
 /*datatable*/
 
 .ui-widget.ui-widget-content{width: 90%;margin: 0 auto;}
-.ui-tabs .ui-tabs-nav{display: flex; justify-content: center;}
+.ui-tabs .ui-tabs-nav{display: flex; justify-content: center; margin: 40px}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor{
   padding: 10px ;
   width: 200px;
   border: none;
   background: orange;
   outline: none;
-   
+
  }
 .ui-widget-content{border: none!important}
 .ui-widget-header{background: white; border: none;}
