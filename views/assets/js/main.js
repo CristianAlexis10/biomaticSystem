@@ -204,6 +204,38 @@ $("#createGroup").submit(function(e){
       setTimeout(function(){$("div.message").remove();},4000);
     }
 });
+//craer proyecto
+$("#createProject").submit(function(e){
+  e.preventDefault();
+    if ($("#nameProject").val() != ""  && $("#dateProject").val()!="" && $("#fichaProject").val()!="" ) {
+      var data = [];
+      data.push($("#nameProject").val());
+      data.push($("#dateProject").val());
+      data.push($("#fichaProject").val());
+        console.log(data);
+        $.ajax({
+          url:"crear-proyecto",
+          type:"post",
+          dataType:"json",
+          data:({data:data}),
+          success:function(result){
+            if (result==true) {
+              $("#createProject")[0].reset();
+              console.log(result);
+            }else{
+              $("div.message").remove();
+              $("#createProject").after("<div class='message'>"+result+"</div>");
+              setTimeout(function(){$("div.message").remove();},4000);
+            }
+          },
+          error:function(result){console.log(result);}
+        });
+    }else{
+      $("div.message").remove();
+      $("#createProject").after("<div class='message'>Todos los campos son requeridos.</div>");
+      setTimeout(function(){$("div.message").remove();},4000);
+    }
+});
 //cambiar estado
 function cambiarEstado(user,est){
   console.log(user,est);

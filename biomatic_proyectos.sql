@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2018 a las 21:04:53
--- Versión del servidor: 10.1.32-MariaDB
--- Versión de PHP: 7.2.5
+-- Tiempo de generación: 07-06-2018 a las 21:40:04
+-- Versión del servidor: 10.1.8-MariaDB
+-- Versión de PHP: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -79,6 +77,16 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarTodoUsuario` (IN `nom` VARCHAR(50), IN `nom2` VARCHAR(50), IN `ape1` VARCHAR(50), IN `ape2` VARCHAR(50), IN `correo` VARCHAR(100), IN `rol` INT, IN `estado` VARCHAR(20), IN `usu` INT)  NO SQL
 BEGIN 
 UPDATE usuario SET usuario.usu_nombre = nom , usuario.usu_nombre2=nom2, usuario.usu_apellido = ape1 , usuario.usu_apellido2 = ape2, usuario.usu_correo =  correo , usuario.rol_id = rol , usuario.usu_estado = estado WHERE usuario.usu_codigo = usu;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saberIntegrantesGrupos` (IN `grupo` INT)  NO SQL
+BEGIN 
+SELECT * FROM usuarioxgrupo u INNER JOIN usuario usu ON u.usu_codigo = usu.usu_codigo WHERE u.gru_codigo = grupo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saberProyectosDeGrupo` (IN `grupo` INT)  NO SQL
+BEGIN 
+SELECT * FROM  proyectoxgrupo INNER JOIN proyecto ON proyectoxgrupo.pro_codigo = proyecto.pro_codigo INNER JOIN tipo_proyecto ON proyecto.tip_pro_codigo = tipo_proyecto.tip_pro_codigo WHERE proyectoxgrupo.gru_codigo = grupo;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `saberProyectosEX` ()  NO SQL
@@ -400,43 +408,36 @@ ALTER TABLE `usuarioxgrupo`
 --
 ALTER TABLE `archivos`
   MODIFY `arc_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
   MODIFY `gru_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT de la tabla `programa_formacion`
 --
 ALTER TABLE `programa_formacion`
   MODIFY `prog_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
   MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT de la tabla `tipo_archivo`
 --
 ALTER TABLE `tipo_archivo`
   MODIFY `tip_arc_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT de la tabla `tipo_proyecto`
 --
 ALTER TABLE `tipo_proyecto`
   MODIFY `tip_pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `usu_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- Restricciones para tablas volcadas
 --
@@ -474,7 +475,6 @@ ALTER TABLE `proyectoxgrupo`
 ALTER TABLE `usuarioxgrupo`
   ADD CONSTRAINT `usuarioxgrupo_ibfk_1` FOREIGN KEY (`usu_codigo`) REFERENCES `usuario` (`usu_codigo`) ON UPDATE CASCADE,
   ADD CONSTRAINT `usuarioxgrupo_ibfk_2` FOREIGN KEY (`gru_codigo`) REFERENCES `grupos` (`gru_codigo`) ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

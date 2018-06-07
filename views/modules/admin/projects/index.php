@@ -27,7 +27,7 @@
     </table>
   </div>
   <div id="tabs-2">
-    <form id="createUser" class="form">
+    <form id="createProject" class="form">
       <div class="wrap--two">
         <div class="wrap--form">
         <label for="nameProject">nombre del projecto:</label>
@@ -42,10 +42,6 @@
         <div class="wrap--form">
         <label for="fichaProject">ficha:</label>
         <input type="text" id="fichaProject">
-      </div>
-        <div class="wrap--form">
-        <label for="codeProject">codigo:</label>
-        <input type="text" id="codeProject">
       </div>
       </div>
       <input type="submit" value="registrar" class="btn--form">
