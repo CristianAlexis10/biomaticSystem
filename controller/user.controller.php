@@ -54,5 +54,16 @@ class UserController{
       echo json_encode("Formato del correo no valido.");
     }
   }
+
+  function changeStatus(){
+    $user = $_POST['user'];
+    $estado = $_POST['estado'];
+    $result = $this->master->procedure->NPR("cambiarEstadoUsuario",array($user,$estado));
+    if ($result==1) {
+      echo json_encode(true);
+    }else{
+      echo json_encode($this->doizer->knowError($result));
+    }
+  }
 }
 ?>

@@ -29,5 +29,25 @@
 				header("Location: inicio");
 			}
 		}
+		function groups(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require_once "views/include/scope.header.php";
+				require_once "views/modules/admin/groups/index.php";
+				require_once "views/include/scope.footer.php";
+			}else{
+				session_destroy();
+				header("Location: inicio");
+			}
+		}
+		function projects(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require_once "views/include/scope.header.php";
+				require_once "views/modules/admin/projects/index.php";
+				require_once "views/include/scope.footer.php";
+			}else{
+				session_destroy();
+				header("Location: inicio");
+			}
+		}
 	}
 ?>
