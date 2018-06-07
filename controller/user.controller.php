@@ -39,20 +39,20 @@ class UserController{
         $i++;
     }
     if ($this->doizer->validateEmail($data[4])==true) {
-      $password = $this->doizer->validateSecurityPassword($data[5]);
+      $password = $this->doizer->validateSecurityPassword($data[6]);
         if (is_array($password)) {
-          $result = $this->master->procedure->NRP("crearUsuario",$data);
+          $result = $this->master->procedure->NRP("crearUsuario",array($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],"Activo"));
           if ($result==1) {
             $token = $this->doizer->randAlphanum(50);
             $data = $this->master->selectBy("usuario",array("usu_correo",$data[4]));
-            $result = $this->master->procedure->NPR("crearAcceso",array($token,$data['usu_codigo'],$password[1]));
+            $result = $this->master->procedure->NRP("crearAcceso",array($token,$data['usu_codigo'],$password[1]));
             if ($result==1) {
               echo json_encode(true);
             }else{
               echo json_encode("ocurrio un error al registar acceso: ".$this->doizer->knowError($result));
             }
           }else{
-            echo json_encode("ocurrio un error al registar usuario: ".$this->doizer->knowError($result));
+            echo json_encode("ocurrio un error al registar usuario: ".$result);
           }
         }else{
           echo json_encode("La contraseña no  cumple con los requisitos: ".$password);

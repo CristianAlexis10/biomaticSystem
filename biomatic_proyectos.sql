@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2018 a las 04:05:37
+-- Tiempo de generación: 07-06-2018 a las 07:04:24
 -- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -19,6 +19,67 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `biomatic_proyectos`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarEstadoUsuario` (IN `id` INT, IN `estado` VARCHAR(20))  NO SQL
+BEGIN 
+UPDATE usuario SET usuario.usu_estado = estado WHERE usuario.usu_codigo = id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `contarArchivosxproyecto` (IN `proyecto` INT)  NO SQL
+BEGIN 
+SELECT COUNT(*) FROM archivos WHERE  archivos.pro_codigo = proyecto;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `contrarUsuariosXgrupo` (IN `grupo` INT)  NO SQL
+BEGIN 
+SELECT COUNT(*) FROM usuarioxgrupo WHERE usuarioxgrupo.gru_codigo = grupo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearAcceso` (IN `token` VARCHAR(150), IN `usu` INT, IN `contra` VARCHAR(200))  NO SQL
+BEGIN
+INSERT INTO acceso (acc_token,usu_codigo,acc_contra) VALUES (token,usu,contra);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearGrupo` (IN `nombre` VARCHAR(50), IN `des` LONGTEXT, IN `fecha` DATE)  NO SQL
+BEGIN 
+INSERT INTO grupos (gru_nombre,gru_descripcion,gru_fecha_resgistro) VALUES (nombre,des,fecha);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearUsuario` (IN `nom1` VARCHAR(50), IN `nom2` VARCHAR(50), IN `ape1` VARCHAR(50), IN `ape2` VARCHAR(50), IN `correo` VARCHAR(100), IN `rol` INT, IN `estado` VARCHAR(20))  NO SQL
+BEGIN
+INSERT INTO usuario (usu_nombre,usu_nombre2,usu_apellido,usu_apellido2,usu_correo,rol_id,usu_estado) VALUES (nom1,nom2,ape1,ape2,correo,rol,estado);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearUsuarioxgrupo` (IN `grupo` INT, IN `usu` INT, IN `fecha` DATE)  NO SQL
+BEGIN
+INSERT INTO usuarioxgrupo (gru_codigo,usu_codigo,fecha_ingreso) VALUES (grupo,usu,fecha);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saberProyectosEX` ()  NO SQL
+BEGIN 
+SELECT proyecto.pro_nombre,proyecto.pro_serial FROM proyecto;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saberTotalGrupos` ()  NO SQL
+BEGIN 
+SELECT COUNT(*) FROM grupos;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saberTotalProyectos` ()  NO SQL
+BEGIN 
+SELECT COUNT(*) FROM proyecto;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `totalUsuarioResgistrados` ()  NO SQL
+BEGIN 
+SELECT COUNT(*) FROM usuario ;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -38,6 +99,7 @@ CREATE TABLE `acceso` (
 --
 
 INSERT INTO `acceso` (`acc_token`, `usu_codigo`, `acc_contra`, `acc_codigo`) VALUES
+('KRve9vDsY32giKyDIix2kVOrJlJj1M9CMWpP73kUBQhklw64WO', 3, '$2y$10$EKHOkttu4djS4wuxW6RkeeS0.5zHN8b6HyHjAjEQqALriknQoKypK', ''),
 ('sfdksaldkjasd', 1, '$2y$10$qTD5VQmm/NYFKA6TeP0Yi.NCqBKGpXCCEFmr8hQcWSNHx.KBUaUie', '');
 
 -- --------------------------------------------------------
@@ -56,6 +118,13 @@ CREATE TABLE `archivos` (
   `pro_codigo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `archivos`
+--
+
+INSERT INTO `archivos` (`arc_codigo`, `arc_nombre`, `arc_descripcion`, `tip_arc_codigo`, `arc_url`, `arc_fecha`, `pro_codigo`) VALUES
+(1, 'Archivo1', 'sadhsaghd', 1, 'aaaa.jpg', '2018-06-06', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -69,6 +138,13 @@ CREATE TABLE `grupos` (
   `gru_fecha_resgistro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `grupos`
+--
+
+INSERT INTO `grupos` (`gru_codigo`, `gru_nombre`, `gru_descripcion`, `gru_fecha_resgistro`) VALUES
+(1, 'Biomatic', 'des', '2018-06-06');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +156,13 @@ CREATE TABLE `programa_formacion` (
   `porg_nombre` varchar(130) NOT NULL,
   `prog_siglas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `programa_formacion`
+--
+
+INSERT INTO `programa_formacion` (`prog_codigo`, `porg_nombre`, `prog_siglas`) VALUES
+(1, 'Analisis y desarrollo de sistemas de informacion', 'ADSI');
 
 -- --------------------------------------------------------
 
@@ -96,6 +179,13 @@ CREATE TABLE `proyecto` (
   `pro_serial` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `proyecto`
+--
+
+INSERT INTO `proyecto` (`pro_codigo`, `pro_nombre`, `pro_inicio`, `pro_programa_formacion`, `tip_pro_codigo`, `pro_serial`) VALUES
+(1, 'Software', '2018-06-05', 1, 1, 'aaa-aaa');
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +196,13 @@ CREATE TABLE `proyectoxgrupo` (
   `pro_codigo` int(11) NOT NULL,
   `gru_codigo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `proyectoxgrupo`
+--
+
+INSERT INTO `proyectoxgrupo` (`pro_codigo`, `gru_codigo`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +245,10 @@ CREATE TABLE `tipo_proyecto` (
 
 INSERT INTO `tipo_proyecto` (`tip_pro_codigo`, `tip_pro_nombre`, `tip_pro_descripcion`) VALUES
 (1, 'Investigación', ''),
-(2, 'Innovaciòn', '');
+(2, 'Innovaciòn', ''),
+(3, 'Fortalecimiento Tecnologico', ''),
+(4, 'Modernización', ''),
+(5, 'Divulgación', '');
 
 -- --------------------------------------------------------
 
@@ -172,7 +272,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usu_codigo`, `usu_nombre`, `usu_nombre2`, `usu_apellido`, `usu_apellido2`, `usu_correo`, `rol_id`, `usu_estado`) VALUES
-(1, 'Evelin', NULL, 'lopera', NULL, 'eve@gmail.com', 1, 'Activo');
+(1, 'Evelin', NULL, 'lopera', NULL, 'eve@gmail.com', 1, 'Activo'),
+(3, 'y986896', '876786', '7868767', '78687', '6786@gmail.com', 1, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -185,6 +286,13 @@ CREATE TABLE `usuarioxgrupo` (
   `usu_codigo` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarioxgrupo`
+--
+
+INSERT INTO `usuarioxgrupo` (`gru_codigo`, `usu_codigo`, `fecha_ingreso`) VALUES
+(1, 1, '2018-06-05');
 
 --
 -- Índices para tablas volcadas
@@ -249,6 +357,7 @@ ALTER TABLE `tipo_proyecto`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`usu_codigo`),
+  ADD UNIQUE KEY `usu_correo` (`usu_correo`),
   ADD KEY `rol_id` (`rol_id`);
 
 --
@@ -266,22 +375,22 @@ ALTER TABLE `usuarioxgrupo`
 -- AUTO_INCREMENT de la tabla `archivos`
 --
 ALTER TABLE `archivos`
-  MODIFY `arc_codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `arc_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `gru_codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gru_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `programa_formacion`
 --
 ALTER TABLE `programa_formacion`
-  MODIFY `prog_codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `prog_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tipo_archivo`
 --
@@ -291,12 +400,12 @@ ALTER TABLE `tipo_archivo`
 -- AUTO_INCREMENT de la tabla `tipo_proyecto`
 --
 ALTER TABLE `tipo_proyecto`
-  MODIFY `tip_pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tip_pro_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usu_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usu_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --

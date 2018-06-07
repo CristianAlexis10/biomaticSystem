@@ -35,6 +35,7 @@ $("#createUser").submit(function(e){
       data.push($("#lastnameUser").val());
       data.push($("#SlastnameUser").val());
       data.push($("#emailUser").val());
+      data.push($("#rolUser").val());
       data.push($("#passUser").val());
     $.ajax({
       url:"crear-usuario",
@@ -43,14 +44,14 @@ $("#createUser").submit(function(e){
       data:({user:data}),
       success:function(result){
         console.log(result);
-        // if (result==true) {
-        //   $("#createUser")[0].reset();
-        //   location.reload();
-        // }else{
-        //   $("div.message").remove();
-        //   $("#formLogin").after("<div class='message'>"+result+"</div>");
-        //   setTimeout(function(){$("div.message").remove();},4000);
-        // }
+        if (result==true) {
+          $("#createUser")[0].reset();
+          location.reload();
+        }else{
+          $("div.message").remove();
+          $("#createUser").after("<div class='message'>"+result+"</div>");
+          setTimeout(function(){$("div.message").remove();},4000);
+        }
       },
       error:function(result){console.log(result);}
     });
