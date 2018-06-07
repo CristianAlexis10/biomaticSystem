@@ -35,10 +35,5 @@
 }
 
 .container{
-  margin-left: 250px;
-  padding: 30px;
-  background: red;
-  position: absolute;
-  top: 50px;
-  width: 100%;
+  display: flex;
 }

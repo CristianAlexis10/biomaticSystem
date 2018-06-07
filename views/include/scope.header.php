@@ -9,3 +9,14 @@
     <link rel="stylesheet" href="views/assets/css/main.css">
   </head>
   <body>
+    <section>
+      <header>
+        <?php require_once("views/include/scope.navigator.php") ?>
+      </header>
+      <div class="wrap--content">
+        <?php require_once "views/include/scope.menutop.php"; ?>
+        <article class="">
+          
+        </article>
+      </div>
+    </section>
