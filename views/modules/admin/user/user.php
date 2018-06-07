@@ -47,13 +47,20 @@
         <input type="email" id="emailUser">
       </div>
       <div class="wrap--form">
+        <label for="emailUser">email</label>
+        <select class="wrap--form">
+          <option value="">administrador</option>
+          <option value="">investigador</option>
+        </select>
+      </div>
+      <div class="wrap--form">
         <label for="passUser">contraseña</label>
         <input type="password" id="passUser">
       </div><div class="wrap--form">
         <label for="repPassUser">repetir contraseña</label>
         <input type="password" id="repPassUser">
       </div>
-      <input type="submit" name="" value="registrar">
+      <input type="submit" value="registrar">
     </form>
   </div>
 
