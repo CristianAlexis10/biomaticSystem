@@ -64,6 +64,15 @@
             ?>
         </select>
       </div>
+      <div class="wrap--form">
+      <label for="grupo">Grupo encargado:</label>
+      <select  id="grupo" >
+          <?php
+            foreach ($this->master->selectAll('grupos') as $row) {
+              echo "<option value='".$row['gru_codigo']."'>".$row['gru_nombre']."</option>";
+            }
+          ?>
+      </sel
       </div>
       <input type="submit" value="registrar" class="btn--form">
     </form>

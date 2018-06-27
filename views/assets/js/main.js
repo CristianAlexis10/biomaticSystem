@@ -218,7 +218,7 @@ $("#createProject").submit(function(e){
           url:"crear-proyecto",
           type:"post",
           dataType:"json",
-          data:({data:data}),
+          data:({data:data,grupo:$("#grupo").val()}),
           success:function(result){
             if (result==true) {
               $("#createProject")[0].reset();
