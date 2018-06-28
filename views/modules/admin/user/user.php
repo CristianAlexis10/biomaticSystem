@@ -60,16 +60,27 @@
       </div>
       <div class="wrap--two">
         <div class="wrap--form">
-        <label for="emailUser">email</label>
-        <input type="email" id="emailUser">
-      </div>
+          <label for="emailUser">email</label>
+          <input type="email" id="emailUser">
+        </div>
         <div class="wrap--form">
-        <label for="rolUser">rol</label>
-        <select id="rolUser">
-          <option value="1">administrador</option>
-          <option value="2">investigador</option>
-        </select>
-      </div>
+          <label for="nivelUser">nivel educativo:</label>
+          <select id="nivelUser">
+            <option value="1">tecnico</option>
+            <option value="1">tecnologo</option>
+            <option value="1">profesional</option>
+            <option value="2">especialista</option>
+            <option value="2">maestria</option>
+            <option value="2">doctorado</option>
+          </select>
+        </div>
+        <div class="wrap--form">
+          <label for="rolUser">rol</label>
+          <select id="rolUser">
+            <option value="1">administrador</option>
+            <option value="2">investigador</option>
+          </select>
+        </div>
       </div>
       <div class="wrap--two">
         <div class="wrap--form">
