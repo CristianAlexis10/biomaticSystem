@@ -153,5 +153,25 @@
 				header("location:inicio");
 			}
 		}
+		function publication(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/publication/publication.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
+		function articles(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/article/article.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
 	}
 ?>

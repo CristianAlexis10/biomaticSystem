@@ -1,6 +1,6 @@
 <h1 class="title">lista de asistencia</h1>
 <div class="container--buttons">
-  <button type="button"> + Adjuntar asistencia</button>
+  <button type="button" onclick="openModal(event, 'modal')"> + Adjuntar asistencia</button>
 </div>
 <table class="datatable" id="tableUser">
   <thead>
@@ -18,10 +18,10 @@
     </tr>
   </tbody>
 </table>
-<div class="container--modal" id="modal">
+<div class="containerModal" id="modal">
   <div class="content--modal">
-    <span>&times;</span>
-    <h1>adjuntar asistencia</h1>
+    <span id="closeModal" onclick="closeModal(event, 'modal')">&times;</span>
+    <h1 class="titleModal">adjuntar asistencia</h1>
     <form id="formAssistence">
       <div class="wrap--form big">
         <label for="dateAssistence">fecha</label>
@@ -31,8 +31,8 @@
         <label for="dateDecripcion">descripción</label>
         <input type="text" id="dateDecription">
       </div>
-      <input type="file" value="name" class="btn--form">
+      <input type="file" value="name">
+      <input type="submit" value="enviar" class="btn--form">
     </form>
   </div>
 </div>
-  
