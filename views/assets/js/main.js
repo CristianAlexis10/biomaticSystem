@@ -338,7 +338,9 @@ $( function() {
   $("#tabs").tabs();
 });
 $('#tableUser').DataTable();
+$('#tableUser-2').DataTable();
 
+// abrir y cerrar ventanas modales
 function openModal(event, modal) {
   let i, containerModal, x;
   containerModal = document.getElementsByClassName('containerModal');

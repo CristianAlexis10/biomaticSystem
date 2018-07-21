@@ -168,11 +168,14 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
   border-radius: 8px;
   position: relative;
 }
-.titleModal{text-align: center; color: grey;}
+.titleModal{text-align: center; color: grey; text-transform: capitalize;}
 #closeModal{
   cursor: pointer;
   position: absolute;
   right: 10px;
   top: 10px;
   font-size: 20px;
+}
+.formModal{
+  width: 300px;
 }
