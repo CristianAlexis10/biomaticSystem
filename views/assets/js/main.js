@@ -333,8 +333,25 @@ function eliminarFicha(ficha){
     });
   }
 }
+
 $( function() {
   $("#tabs").tabs();
 });
-
 $('#tableUser').DataTable();
+
+function openModal(event, modal) {
+  let i, containerModal, x;
+  containerModal = document.getElementsByClassName('containerModal');
+  for (i = 0; i < containerModal.length; i++) {
+    containerModal[i].style.transform = "translateY(-9999px)";
+  }
+  document.getElementById(modal).style.transform = "translateY(0)";
+}
+function closeModal(event, modal) {
+  let i, closeModal, x;
+  closeModal = document.getElementsByClassName('closeModal');
+  for (i = 0; i < closeModal.length; i++) {
+    closeModal[i].style.transform = "translateY(0)";
+  }
+  document.getElementById(modal).style.transform = "translateY(-9999px)";
+}

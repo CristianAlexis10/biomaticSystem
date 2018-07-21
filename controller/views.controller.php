@@ -103,5 +103,55 @@
 				header("Location: inicio");
 			}
 		}
+		function actas(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/actas/actas.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("Location:inicio");
+			}
+		}
+		function detailActas(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/actas/detail.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
+		function assistance(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/assistance/assistance.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
+		function reports(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/report/report.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
+		function purchases(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/purchases/purchases.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
 	}
 ?>

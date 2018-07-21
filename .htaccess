@@ -24,3 +24,8 @@ RewriteRule ^crear-proyecto$ index.php?c=projects&a=create
 RewriteRule ^crear-ficha$ index.php?c=ficha&a=create
 RewriteRule ^eliminar-ficha$ index.php?c=ficha&a=delete
 RewriteRule ^ver-proyecto-(\w+)$ index.php?c=views&a=detailProyect&data=$1
+RewriteRule ^actas-reunion$ index.php?c=views&a=actas
+RewriteRule ^detalles-acta$ index.php?c=views&a=detailActas
+RewriteRule ^listas-asistencia$ index.php?c=views&a=assistance
+RewriteRule ^informes-investigacion$ index.php?c=views&a=reports
+RewriteRule ^compras-contrataciones$ index.php?c=views&a=purchases
