@@ -270,6 +270,129 @@ $("#createFicha").submit(function(e){
       setTimeout(function(){$("div.message").remove();},4000);
     }
 });
+// crear acta
+$("#createActa").submit(function(e) {
+  e.preventDefault();
+  if ($("#nameActa").val() != ""  && $("#cityActa").val()!="" && $("#dateActa").val()!="" ) && $("#datetimeStartActa").val()!="" ) && $("#datetineEndActa").val()!="" ) && $("#placeActa").val()!="" ) && $("#dirActa").val()!="" ) && $("#themeActa").val()!="" ) && $("#objetiveActa").val()!="" ) && $("#meetActa").val()!="" ) && $("#concluActa").val()!="" ) && $("#activityActa").val()!="" ) && $("#responActa").val()!="" ) && $("#dataComproActa").val()!="" ) && $("#NameAsistActa").val()!="" ) && $("#cargoActa").val()!="" ) && $("#nameInvitedActa").val()!="" ) && $("#cargoInvitedActa").val()!="" ) && $("#entidadActa").val()!="" ) {
+    var data = [];
+    data.push($("#nameActa").val());
+    data.push($("#cityActa").val());
+    data.push($("#dateActa").val());
+    data.push($("#datetimeStartActa").val());
+    data.push($("#datetineEndActa").val());
+    data.push($("#placeActa").val());
+    data.push($("#dirActa").val());
+    data.push($("#themeActa").val());
+    data.push($("#objetiveActa").val());
+    data.push($("#meetActa").val());
+    data.push($("#concluActa").val());
+    data.push($("#activityActa").val());
+    data.push($("#responActa").val());
+    data.push($("#dataComproActa").val());
+    data.push($("#NameAsistActa").val());
+    data.push($("#cargoActa").val());
+    data.push($("#nameInvitedActa").val());
+    data.push($("#cargoInvitedActa").val());
+    data.push($("#entidadActa").val());
+    console.log(data);
+    $.ajax({
+      url:"",
+      type:"post",
+      dataType:"json",
+      data:({data:data}),
+      success:function(result) {
+        if (result==true) {
+          $("#createActa")[0].reset();
+          location.reload();
+          console.log(result);
+        }else {
+          $("div.message").remove();
+          $("#createActa").after("<div class='message'>" + result + "</div>");
+          setTimeout(function() {$("div.message").remove();},4000);
+        });
+        }
+      }
+    });
+  }
+});
+//crear lista asistencia
+$("#formAssistence").submit(function(e) {
+  e.preventDefault();
+  if ($("#dateAssistence").val() !="" && $("#dateDecription").val() !="" ) {
+    var data = [];
+    data.push($("#dateAssistence").val());
+    data.push($("#dateDecription").val());
+    $.ajax({
+      url:"",
+      type:"post",
+      dataType:"json",
+      data:({data:data}),
+      success:function(result) {
+        if (result==true) {
+          $("#formAssistence")[0].reset();
+          location.reload();
+        }else{
+          $("div.message").remove();
+          $("#formAssistence").after("<div class='message'>" + result + "</div>");
+          setTimeout(function(){$("div.message").remove();},4000);
+        }
+      }
+    });
+  }
+});
+//crear reporte de investigacion
+$("#formReports").submit(function(e) {
+  e.preventDefault();
+  if ($("#datereports").val() !="" && $("#dateDecriptionReports").val() !="" ) {
+    var data = [];
+    data.push($("#datereports").val());
+    data.push($("#dateDecriptionReports").val());
+    $.ajax({
+      url:"",
+      type:"post",
+      dataType:"json",
+      data:({data:data}),
+      success:function(result) {
+        if (result==true) {
+          $("#formReports")[0].reset();
+          location.reload();
+        }else{
+          $("div.message").remove();
+          $("#formReports").after("<div class='message'>" + result + "</div>");
+          setTimeout(function(){$("div.message").remove();},4000);
+        }
+      }
+    });
+  }
+});
+//crear compra
+$("#formPurchases").submit(function(e) {
+  e.preventDefault();
+  if ($("#namePurchases").val() !="" && $("#datePurchases").val() !="" && $("#namePurchases").val() !="") && $("#costPrchases").val() !="") && $("#descPurchases").val() !=""){
+    var data = [];
+    data.push($("#namePurchases").val());
+    data.push($("#datePurchases").val());
+    data.push($("#namePurchases").val());
+    data.push($("#costPrchases").val());
+    data.push($("#descPurchases").val());
+    $.ajax({
+      url:"",
+      type:"post",
+      dataType:"json",
+      data:({data:data}),
+      success:function(result) {
+        if (result==true) {
+          $("#formPurchases")[0].reset();
+          location.reload();
+        }else{
+          $("div.message").remove();
+          $("#formPurchases").after("<div class='message'>" + result + "</div>");
+          setTimeout(function(){$("div.message").remove();},4000);
+        }
+      }
+    });
+  }
+});
 //cambiar estado
 function cambiarEstado(user,est){
   console.log(user,est);
