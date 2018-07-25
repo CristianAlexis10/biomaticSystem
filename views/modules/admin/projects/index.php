@@ -45,7 +45,7 @@
       </div>
       <div class="wrap--two">
         <div class="wrap--form">
-        <label for="fichaProject">ficha:</label>
+        <label for="fichaProject">programa de formación</label>
         <select  id="fichaProject" >
             <?php
               foreach ($this->master->selectAll('programa_formacion') as $row) {

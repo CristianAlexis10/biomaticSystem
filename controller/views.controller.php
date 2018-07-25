@@ -173,5 +173,25 @@
 				header("location:inicio");
 			}
 		}
+		function aliados(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/aliados/aliados.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
+		function alumns(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/alumns/alumns.php';
+				require_once "views/include/scope.footer.php";
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
 	}
 ?>

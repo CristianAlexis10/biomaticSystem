@@ -49,10 +49,7 @@
       </div>
       <div class="wrap--form big">
         <label for="descPurchases">descripción</label>
-        <select id="">
-          <option value=""></option>
-          <option value=""></option>
-        </select>
+        <textarea name="name" rows="8" cols="80"></textarea>
       </div>
       <input type="submit" class="btn--form">
     </form>

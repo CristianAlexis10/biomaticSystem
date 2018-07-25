@@ -1,4 +1,4 @@
-<h1 class="title">informes de investivacion</h1>
+<h1 class="title">informes de investigación</h1>
 <div class="container--buttons">
   <button type="button" onclick="openModal(event, 'modal')"> + Adjuntar informe</button>
 </div>
