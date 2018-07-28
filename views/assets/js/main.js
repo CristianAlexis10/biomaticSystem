@@ -26,6 +26,12 @@ $("#formLogin").submit(function(e){
     setTimeout(function(){$("div.message").remove();},4000);
   }
 });
+$( function() {
+  $("#tabs").tabs();
+});
+$('#tableUser').DataTable();
+$('#tableUser-2').DataTable();
+
 //crear usuario
 $("#createUser").submit(function(e){
   e.preventDefault();
@@ -222,6 +228,7 @@ $("#createProject").submit(function(e){
           success:function(result){
             if (result==true) {
               $("#createProject")[0].reset();
+              location.reload();
               console.log(result);
             }else{
               $("div.message").remove();
@@ -270,129 +277,36 @@ $("#createFicha").submit(function(e){
       setTimeout(function(){$("div.message").remove();},4000);
     }
 });
-// crear acta
-$("#createActa").submit(function(e) {
-  e.preventDefault();
-  if ($("#nameActa").val() != ""  && $("#cityActa").val()!="" && $("#dateActa").val()!="" ) && $("#datetimeStartActa").val()!="" ) && $("#datetineEndActa").val()!="" ) && $("#placeActa").val()!="" ) && $("#dirActa").val()!="" ) && $("#themeActa").val()!="" ) && $("#objetiveActa").val()!="" ) && $("#meetActa").val()!="" ) && $("#concluActa").val()!="" ) && $("#activityActa").val()!="" ) && $("#responActa").val()!="" ) && $("#dataComproActa").val()!="" ) && $("#NameAsistActa").val()!="" ) && $("#cargoActa").val()!="" ) && $("#nameInvitedActa").val()!="" ) && $("#cargoInvitedActa").val()!="" ) && $("#entidadActa").val()!="" ) {
-    var data = [];
-    data.push($("#nameActa").val());
-    data.push($("#cityActa").val());
-    data.push($("#dateActa").val());
-    data.push($("#datetimeStartActa").val());
-    data.push($("#datetineEndActa").val());
-    data.push($("#placeActa").val());
-    data.push($("#dirActa").val());
-    data.push($("#themeActa").val());
-    data.push($("#objetiveActa").val());
-    data.push($("#meetActa").val());
-    data.push($("#concluActa").val());
-    data.push($("#activityActa").val());
-    data.push($("#responActa").val());
-    data.push($("#dataComproActa").val());
-    data.push($("#NameAsistActa").val());
-    data.push($("#cargoActa").val());
-    data.push($("#nameInvitedActa").val());
-    data.push($("#cargoInvitedActa").val());
-    data.push($("#entidadActa").val());
-    console.log(data);
+function eliminarGrupo(grupo){
+  if (confirm("¿Eliminar este grupo?")) {
     $.ajax({
-      url:"",
+      url:"eliminar-grupo",
       type:"post",
       dataType:"json",
-      data:({data:data}),
-      success:function(result) {
-        if (result==true) {
-          $("#createActa")[0].reset();
-          location.reload();
-          console.log(result);
-        }else {
-          $("div.message").remove();
-          $("#createActa").after("<div class='message'>" + result + "</div>");
-          setTimeout(function() {$("div.message").remove();},4000);
-        });
-        }
-      }
+      data:({grupo:grupo}),
+      success:function(result){
+        console.log(result);
+        if(result==true){location.reload();}else{alert(result)}
+      },
+      error:function(result){console.log(result);}
     });
   }
-});
-//crear lista asistencia
-$("#formAssistence").submit(function(e) {
-  e.preventDefault();
-  if ($("#dateAssistence").val() !="" && $("#dateDecription").val() !="" ) {
-    var data = [];
-    data.push($("#dateAssistence").val());
-    data.push($("#dateDecription").val());
+}
+function eliminarFicha(ficha){
+  if (confirm("¿Eliminar esta ficha?")) {
     $.ajax({
-      url:"",
+      url:"eliminar-ficha",
       type:"post",
       dataType:"json",
-      data:({data:data}),
-      success:function(result) {
-        if (result==true) {
-          $("#formAssistence")[0].reset();
-          location.reload();
-        }else{
-          $("div.message").remove();
-          $("#formAssistence").after("<div class='message'>" + result + "</div>");
-          setTimeout(function(){$("div.message").remove();},4000);
-        }
-      }
+      data:({ficha:ficha}),
+      success:function(result){
+        console.log(result);
+        if(result==true){location.reload();}else{alert(result)}
+      },
+      error:function(result){console.log(result);}
     });
   }
-});
-//crear reporte de investigacion
-$("#formReports").submit(function(e) {
-  e.preventDefault();
-  if ($("#datereports").val() !="" && $("#dateDecriptionReports").val() !="" ) {
-    var data = [];
-    data.push($("#datereports").val());
-    data.push($("#dateDecriptionReports").val());
-    $.ajax({
-      url:"",
-      type:"post",
-      dataType:"json",
-      data:({data:data}),
-      success:function(result) {
-        if (result==true) {
-          $("#formReports")[0].reset();
-          location.reload();
-        }else{
-          $("div.message").remove();
-          $("#formReports").after("<div class='message'>" + result + "</div>");
-          setTimeout(function(){$("div.message").remove();},4000);
-        }
-      }
-    });
-  }
-});
-//crear compra
-$("#formPurchases").submit(function(e) {
-  e.preventDefault();
-  if ($("#namePurchases").val() !="" && $("#datePurchases").val() !="" && $("#namePurchases").val() !="") && $("#costPrchases").val() !="") && $("#descPurchases").val() !=""){
-    var data = [];
-    data.push($("#namePurchases").val());
-    data.push($("#datePurchases").val());
-    data.push($("#namePurchases").val());
-    data.push($("#costPrchases").val());
-    data.push($("#descPurchases").val());
-    $.ajax({
-      url:"",
-      type:"post",
-      dataType:"json",
-      data:({data:data}),
-      success:function(result) {
-        if (result==true) {
-          $("#formPurchases")[0].reset();
-          location.reload();
-        }else{
-          $("div.message").remove();
-          $("#formPurchases").after("<div class='message'>" + result + "</div>");
-          setTimeout(function(){$("div.message").remove();},4000);
-        }
-      }
-    });
-  }
-});
+}
 //cambiar estado
 function cambiarEstado(user,est){
   console.log(user,est);
@@ -426,43 +340,6 @@ function asignar_grupo(usu,grupo){
   }
 }
 
-function eliminarGrupo(grupo){
-  if (confirm("¿Eliminar este grupo?")) {
-    $.ajax({
-      url:"eliminar-grupo",
-      type:"post",
-      dataType:"json",
-      data:({grupo:grupo}),
-      success:function(result){
-        console.log(result);
-        if(result==true){location.reload();}else{alert(result)}
-      },
-      error:function(result){console.log(result);}
-    });
-  }
-}
-function eliminarFicha(ficha){
-  if (confirm("¿Eliminar esta ficha?")) {
-    $.ajax({
-      url:"eliminar-ficha",
-      type:"post",
-      dataType:"json",
-      data:({ficha:ficha}),
-      success:function(result){
-        console.log(result);
-        if(result==true){location.reload();}else{alert(result)}
-      },
-      error:function(result){console.log(result);}
-    });
-  }
-}
-
-$( function() {
-  $("#tabs").tabs();
-});
-$('#tableUser').DataTable();
-$('#tableUser-2').DataTable();
-
 // abrir y cerrar ventanas modales
 function openModal(event, modal) {
   let i, containerModal, x;
@@ -480,3 +357,53 @@ function closeModal(event, modal) {
   }
   document.getElementById(modal).style.transform = "translateY(-9999px)";
 }
+
+// crear acta
+$("#createActa").submit(function(e) {
+  e.preventDefault();
+  if ($("#nameActa").val() != ""  && $("#cityActa").val()!="" && $("#dateActa").val()!=""  && $("#datetimeStartActa").val()!=""  && $("#datetineEndActa").val()!=""  && $("#placeActa").val()!=""  && $("#dirActa").val()!=""  && $("#themeActa").val()!=""  && $("#objetiveActa").val()!=""  && $("#meetActa").val()!=""  && $("#concluActa").val()!=""  && $("#activityActa").val()!=""  && $("#responActa").val()!=""  && $("#dataComproActa").val()!=""  && $("#NameAsistActa").val()!=""  && $("#cargoActa").val()!=""  && $("#nameInvitedActa").val()!=""  && $("#cargoInvitedActa").val()!="" && $("#entidadActa").val()!="" ) {
+    var data = [];
+    data.push($("#nameActa").val());
+    data.push($("#cityActa").val());
+    data.push($("#dateActa").val());
+    data.push($("#datetimeStartActa").val());
+    data.push($("#datetineEndActa").val());
+    data.push($("#PlaceActa").val());
+    data.push($("#dirActa").val());
+    data.push($("#themeActa").val());
+    data.push($("#objectiveActa").val());
+    data.push($("#meetActa").val());
+    data.push($("#concluActa").val());
+    data.push($("#activityActa").val());
+    data.push($("#responActa").val());
+    data.push($("#dataComproActa").val());
+    data.push($("#NameAsistActa").val());
+    data.push($("#cargoActa").val());
+    data.push($("#nameInvitedActa").val());
+    data.push($("#cargoInvitedActa").val());
+    data.push($("#entidadActa").val());
+    $.ajax({
+      url:"crear-acta",
+      type:"post",
+      dataType:"json",
+      data:({data:data}),
+      success:function(result) {
+        console.log(result);
+        if (result==true) {
+          $("#createActa")[0].reset();
+          location.reload();
+          console.log(result);
+        }else {
+          $("div.message").remove();
+          $("#createActa").after("<div class='message'>" + result + "</div>");
+          setTimeout(function() {$("div.message").remove();},4000);
+        }
+        },
+        error:function(res){
+          console.log(res);
+        }
+    })
+ }else{
+   alert("Campos vacios.");
+ }
+ }) 

@@ -1,4 +1,8 @@
-<h1 class="title">llamar desde php el nombre</h1>
+<?php 
+$data = $this->master->selectBy("proyecto",array("pro_codigo",$_GET['data']));
+$_SESSION['proyecto_seleccionado']=$_GET['data'];
+?>
+<h1 class="title"><?php echo $data['pro_nombre']?></h1>
 <div class="wrap--grid">
   <div class="content--grid"><a href="actas-reunion">Acta de reunion</a></div>
   <div class="content--grid"><a href="listas-asistencia">Lista de asistencia</a></div>

@@ -14,11 +14,14 @@
         </tr>
       </thead>
       <tbody>
+      <?php foreach($this->master->selectAllBy("actas",array("pro_codigo",$_SESSION['proyecto_seleccionado'])) as $row){?>
         <tr>
-          <td>holaa</td>
-          <td>holaa</td>
-          <td><a href="detalles-acta">Ver</a></td>
+          <td><?php echo $row['nombre_comite']?></td>
+          <td><?php echo $row['fecha']?></td>
+          <td><a href="detalles-acta-<?php echo $row['id_acta']?>">Ver</a></td>
         </tr>
+
+     <?php }?>
       </tbody>
 
     </table>

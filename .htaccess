@@ -25,7 +25,7 @@ RewriteRule ^crear-ficha$ index.php?c=ficha&a=create
 RewriteRule ^eliminar-ficha$ index.php?c=ficha&a=delete
 RewriteRule ^ver-proyecto-(\w+)$ index.php?c=views&a=detailProyect&data=$1
 RewriteRule ^actas-reunion$ index.php?c=views&a=actas
-RewriteRule ^detalles-acta$ index.php?c=views&a=detailActas
+RewriteRule ^detalles-acta-(\w+)$ index.php?c=views&a=detailActas&data=$1
 RewriteRule ^listas-asistencia$ index.php?c=views&a=assistance
 RewriteRule ^informes-investigacion$ index.php?c=views&a=reports
 RewriteRule ^compras-contrataciones$ index.php?c=views&a=purchases
@@ -33,3 +33,5 @@ RewriteRule ^publicaciones$ index.php?c=views&a=publication
 RewriteRule ^articulos-estudio$ index.php?c=views&a=articles
 RewriteRule ^aliados$ index.php?c=views&a=aliados
 RewriteRule ^aprendices$ index.php?c=views&a=alumns
+RewriteRule ^crear-acta$ index.php?c=actas&a=crear
+RewriteRule ^subir-asistencia$ index.php?c=asistencia&a=crear
