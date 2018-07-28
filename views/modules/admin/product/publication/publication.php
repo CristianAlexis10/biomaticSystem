@@ -82,7 +82,7 @@
   <div class="content--modal">
     <span id="closeModal" onclick="closeModal(event, 'modal2')">&times;</span>
     <h1 class="titleModal">crear tipo publicación</h1>
-    <form id="formPublicationType" class="formModal">
+    <form id="formPublicationType" class="formModal" action="crear-tipo" method="post">
       <div class="wrap--form big">
         <label for="namePublicationType">nombre</label>
         <input type="text" id="namePublicationType">

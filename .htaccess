@@ -35,3 +35,4 @@ RewriteRule ^aliados$ index.php?c=views&a=aliados
 RewriteRule ^aprendices$ index.php?c=views&a=alumns
 RewriteRule ^crear-acta$ index.php?c=actas&a=crear
 RewriteRule ^subir-asistencia$ index.php?c=asistencia&a=crear
+RewriteRule ^subir-informe$ index.php?c=informe&a=crear
