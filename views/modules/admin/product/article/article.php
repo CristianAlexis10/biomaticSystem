@@ -16,7 +16,13 @@
       <td>dbdfbdfbdf</td>
       <td>dsfgdfgdf</td>
       <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-      <td><a>descargar</a>---<a>eliminar</a></td>
+      <td class="actions"><a><i class="fas fa-download"></i></a><a><i class="fas fa-trash-alt"></i</a></td>
+    </tr>
+    <tr>
+      <td>dbdfbdfbdf</td>
+      <td>dsfgdfgdf</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+      <td class="actions"><a><i class="fas fa-download"></i></a><a><i class="fas fa-trash-alt"></i</a></td>
     </tr>
   </tbody>
 </table>

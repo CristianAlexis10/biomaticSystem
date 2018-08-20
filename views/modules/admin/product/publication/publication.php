@@ -22,7 +22,7 @@
           <td>sdgdfdz</td>
           <td>sebgd</td>
           <td>aebdf</td>
-          <td><a onclick="openModal(event, 'modal3')">editar</a>---<a>eliminar</a></td>
+          <td class="actions"><a onclick="openModal(event, 'modal3')"><i class="fas fa-share-square"></i></a><a><i class="fas fa-trash-alt"></i></a></td>
         </tr>
       </tbody>
     </table>
@@ -41,7 +41,7 @@
       <tbody>
         <tr>
           <td>sdgdfdz</td>
-          <td><a>editar</a>---<a>eliminar</a></td>
+          <td class="actions"><a><i class="fas fa-share-square"></i></a><a><i class="fas fa-trash-alt"></i></a></td>
         </tr>
       </tbody>
     </table>

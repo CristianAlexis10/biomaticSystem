@@ -406,4 +406,47 @@ $("#createActa").submit(function(e) {
  }else{
    alert("Campos vacios.");
  }
- }) 
+ })
+
+ // crear aprendiz
+
+ $("#formAlums").submit(function(e) {
+   if ($("#alumnName").val() !="" && $("#alumnLast").val() !="" && $("#alumnTypedoc").val() !="" && $("#alumnDoc").val()!="" && $("#alumnEmail").val() != "" && $("#alumnPhone").val() !="" && $("#alumnDate").val()!="" && $("#alumnDatend").val() !="" && $("#alumnFic").val()!="" && $("#alumnProg").val()!="" && $("#alumnTypevin").val() !="") {
+     var data = [];
+     data.push($("#alumnName").val());
+     data.push($("#alumnLast").val());
+     data.push($("#alumnTypedoc").val());
+     data.push($("#alumnDoc").val());
+     data.push($("#alumnEmail").val());
+     data.push($("#alumnPhone").val());
+     data.push($("#alumnDate").val());
+     data.push($("#alumnDatend").val());
+     data.push($("#alumnFic").val());
+     data.push($("#alumnFic").val());
+     data.push($("#alumnProg").val());
+     data.push($("#alumnTypevin").val());
+     $.ajax({
+       url:"alumns",
+       type:"post",
+       dataType:"json",
+       data:({data:data}),
+       success:function(result){
+         if (result==true){
+           $("formAlums"==true)[0].reset();
+           location.reload();
+         }else {
+           $("div.message").remove();
+           $("#formAlums").after("<div class='message'>"+result+"</div>");
+           setTimeout(function() {
+             $("#formAlums").remove();
+           },4000)
+         }
+       },
+       error:function(res) {
+         console.log(res);
+       }
+     })
+   }else {
+     alert("llena todos los campos");
+   }
+ })
