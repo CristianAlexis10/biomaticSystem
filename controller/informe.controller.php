@@ -30,6 +30,27 @@ class InformeController{
         header("Location: informes-investigacion");
         
       }
-    }    
+    }   
+    
+    function crearTipo(){
+      $res = $this->master->insert("tipo_publicacion",array($_POST['namePublicationType'],$_POST['desc']),array("id"));
+      if($res==1){
+        $_SESSION['msn'] ="exitoso.";
+        header("Location: publicaciones");
+      }else{
+        $_SESSION['msn'] =$this->doizer->knowError($res);
+        header("Location: publicaciones");
+      }
+    }
+    function eliminarTipo(){
+      $res = $this->master->delete("tipo_publicacion",array("id",$_GET['data']));
+      if($res==1){
+        $_SESSION['msn'] ="exitoso.";
+        header("Location: publicaciones");
+      }else{
+        $_SESSION['msn'] =$this->doizer->knowError($res);
+        header("Location: publicaciones");
+      }
+    }
 }
 ?>

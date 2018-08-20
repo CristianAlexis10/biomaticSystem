@@ -8,6 +8,12 @@
     <div class="container--buttons">
       <button type="button" onclick="openModal(event, 'modal')"> + crear publicación</button>
     </div>
+  <?php 
+    if(isset($_SESSION['msn'] )){
+      echo $_SESSION['msn'] ;
+      unset($_SESSION['msn'] );
+    }
+  ?>
     <table class="datatable" id="tableUser">
       <thead>
         <tr>
@@ -35,14 +41,20 @@
       <thead>
         <tr>
           <th>nombre</th>
+          <th>descripción</th>
           <th>acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>sdgdfdz</td>
-          <td class="actions"><a><i class="fas fa-share-square"></i></a><a><i class="fas fa-trash-alt"></i></a></td>
-        </tr>
+      <?php 
+          foreach($this->master->selectAll('tipo_publicacion') as $row){
+            echo "<tr>";
+            echo "<td>".utf8_encode($row['nombre'])."</td>";
+            echo "<td>".$row['descripcion']."</td>";
+            echo "<td class='actions'><a href='eliminar-tipo-piblicacion-".$row['id']."'><i class='fas fa-trash-alt'></i></a></td>";
+            echo "</tr>";
+          }
+         ?>
       </tbody>
     </table>
   </div>
@@ -85,7 +97,11 @@
     <form id="formPublicationType" class="formModal" action="crear-tipo" method="post">
       <div class="wrap--form big">
         <label for="namePublicationType">nombre</label>
-        <input type="text" id="namePublicationType">
+        <input type="text" id="namePublicationType" name="namePublicationType">
+      </div>
+      <div class="wrap--form big">
+        <label for="desc">Descripción</label>
+        <input type="text" id="desc" name="desc">
       </div>
       <input type="submit" class="btn--form">
     </form>

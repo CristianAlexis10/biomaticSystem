@@ -36,3 +36,5 @@ RewriteRule ^aprendices$ index.php?c=views&a=alumns
 RewriteRule ^crear-acta$ index.php?c=actas&a=crear
 RewriteRule ^subir-asistencia$ index.php?c=asistencia&a=crear
 RewriteRule ^subir-informe$ index.php?c=informe&a=crear
+RewriteRule ^crear-tipo$ index.php?c=informe&a=crearTipo
+RewriteRule ^eliminar-tipo-piblicacion-(\w+)$ index.php?c=informe&a=eliminarTipo&data=$1
