@@ -432,7 +432,7 @@ $("#createActa").submit(function(e) {
        data:({data:data}),
        success:function(result){
          if (result==true){
-           $("formAlums"==true)[0].reset();
+           $("formAlums")[0].reset();
            location.reload();
          }else {
            $("div.message").remove();
@@ -450,3 +450,36 @@ $("#createActa").submit(function(e) {
      alert("llena todos los campos");
    }
  })
+// publicaciones
+$("#formPublication").submit(function(e) {
+  if ($("#namePublication").val() !="" && $("#datePublication").val() != "" && $("#typePublication").val() != "" && $("#statusPublication").val() != "") {
+    var data = [];
+    data.push($("#namePublication").val());
+    data.push($("#datePublication").val());
+    data.push($("#typePublication").val());
+    data.push($("#statusPublication").val());
+    $.ajax({
+      url: "publicaciones",
+      type: "post",
+      dataType:"json",
+      data:({data:data}),
+      success: function(result) {
+        if (result == true) {
+          $("#formPublication")[0].reset();
+          location.reload();
+        }else {
+          $("div.message").remove();
+          $("formPublication").after("<div class='message'"+result+"</div>");
+          setTimeout(function() {
+              $("formPublication").remove()
+          },4000)
+        }
+      },
+      error: function(res) {
+        console.log(res);
+      }
+    })
+  }else {
+    alert("llenar todos los campos");
+  }
+})
