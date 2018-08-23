@@ -1,6 +1,6 @@
 <h1 class="title">articulos de estudio</h1>
 <div class="container--buttons">
-  <button type="button" onclick="openModal(event, 'modal')"> + crear publicación</button>
+  <button type="button" onclick="openModal(event, 'modal')"> + registrar articulo de estudio</button>
 </div>
 <table class="datatable" id="tableUser">
   <thead>
@@ -29,7 +29,7 @@
 <div class="containerModal" id="modal">
   <div class="content--modal">
     <span id="closeModal" onclick="closeModal(event, 'modal')">&times;</span>
-    <h1 class="titleModal">crear publicación</h1>
+    <h1 class="titleModal">articulos de estudio</h1>
     <form id="formPublication" class="formModal">
       <div class="wrap--form big">
         <label for="namePublication">nombre</label>

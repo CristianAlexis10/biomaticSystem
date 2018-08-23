@@ -27,7 +27,7 @@
     <form id="formPurchases">
       <div class="wrap--form big">
         <label for="namePurchases">nombre del producto o servicio</label>
-        <input type="text" id="namePurchases"> <?php // BUG: wtf? porque dos id iguales? ?>
+        <input type="text" id="namePurchases">
       </div>
       <div class="wrap--form big">
         <label for="datePurchases">fecha</label>
@@ -35,8 +35,8 @@
       </div>
       <div class="wrap--two">
         <div class="wrap--form big">
-          <label for="namePurchases">cantidad</label>
-          <input type="text" id="namePurchases"> <?php // BUG: wtf? porque dos id iguales? x2 ?>
+          <label for="cantPurchases">cantidad</label>
+          <input type="text" id="cantPurchases">
         </div>
         <div class="wrap--form big">
           <label for="costPrchases">precio</label>
@@ -46,10 +46,6 @@
       <div class="wrap--form big">
         <label for="descPurchases">descripción</label>
         <textarea id="descPurchases" rows="8" cols="80"></textarea>
-      </div>
-      <div class="wrap--form big">
-        <label for="descPurchases">descripción</label>
-        <textarea name="name" rows="8" cols="80"></textarea>
       </div>
       <input type="submit" class="btn--form">
     </form>

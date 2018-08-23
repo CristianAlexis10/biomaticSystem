@@ -1,4 +1,4 @@
-<?php 
+<?php
 $data = $this->master->selectBy("proyecto",array("pro_codigo",$_GET['data']));
 $_SESSION['proyecto_seleccionado']=$_GET['data'];
 ?>
@@ -12,5 +12,5 @@ $_SESSION['proyecto_seleccionado']=$_GET['data'];
   <div class="content--grid"><a href="compras-contrataciones">Compras y contrataciones</a></div>
   <div class="content--grid"><a href="aliados">Aliados</a></div>
   <div class="content--grid"><a href="aprendices">Aprendices</a></div>
-  <div class="content--grid"><a href="">Estadisticas</a></div>
+  <div class="content--grid"><a href="estadisticas">Estadisticas</a></div>
 </div>

@@ -179,3 +179,7 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
 .formModal{
   width: 300px;
 }
+/*views statistics */
+.containerStatistic{
+  display: grid;
+}

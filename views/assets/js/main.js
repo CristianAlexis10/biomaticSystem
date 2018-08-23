@@ -409,7 +409,6 @@ $("#createActa").submit(function(e) {
  })
 
  // crear aprendiz
-
  $("#formAlums").submit(function(e) {
    if ($("#alumnName").val() !="" && $("#alumnLast").val() !="" && $("#alumnTypedoc").val() !="" && $("#alumnDoc").val()!="" && $("#alumnEmail").val() != "" && $("#alumnPhone").val() !="" && $("#alumnDate").val()!="" && $("#alumnDatend").val() !="" && $("#alumnFic").val()!="" && $("#alumnProg").val()!="" && $("#alumnTypevin").val() !="") {
      var data = [];
@@ -452,7 +451,7 @@ $("#createActa").submit(function(e) {
  })
 // publicaciones
 $("#formPublication").submit(function(e) {
-  if ($("#namePublication").val() !="" && $("#datePublication").val() != "" && $("#typePublication").val() != "" && $("#statusPublication").val() != "") {
+  if ($("#namePublication").val()!="" && $("#datePublication").val() != "" && $("#typePublication").val() != "" && $("#statusPublication").val() != "") {
     var data = [];
     data.push($("#namePublication").val());
     data.push($("#datePublication").val());
@@ -483,3 +482,68 @@ $("#formPublication").submit(function(e) {
     alert("llenar todos los campos");
   }
 })
+// comprar y contrataciones
+$("formPurchases").submit(function(e) {
+  if ($("#namePurchases").val()!="" && $("#datePurchases").val()!="" && $("#cantPurchases").val()!="" && $("#costPrchases").val()!="" && $("#descPurchases").val()!="") {
+    var data = [];
+    data.push($("#namePurchases"));
+    data.push($("#datePurchases"));
+    data.push($("#cantPurchases"));
+    data.push($("#costPrchases"));
+    data.push($("#descPurchases"));
+    $.ajax({
+      url:"",
+      type:"post",
+      dataType:"json",
+      data: ({data:data}),
+      success: function (result) {
+        if (result == true) {
+          $("formPurchases")[0].reset();
+          location.reload();
+        }else {
+          $("div.message").remove();
+          $("#formPurchases").after("<div class='message'>"+result+"</div>");
+        }
+      },
+      error: function(res) {
+        console.log(res);
+      }
+    })
+  }else {
+    alert("llena todos los campos");
+  }
+});
+
+// aliados
+
+$("#formAliados").submit(function(e) {
+   if ($("#nameAliado").val() !="" && $("#descAliado").val() !="" && $("#typeAliado").val() !="" && $("#statusAliado").val() !="") {
+     var data =[];
+     data.push($("#nameAliado"));
+     data.push($("#descAliado"));
+     data.push($("#typeAliado"));
+     data.push($("#statusAliado"));
+     $.ajax({
+       url:"",
+       type:"post",
+       dataType:"json",
+       data: ({data:data}),
+       success:function(result) {
+         if (result == true) {
+           $("#formAliados")[0].reset();
+           location.reload();
+         }else {
+           $("div.message").remove();
+           $("#formAliados").after("<div class='message'"+result+"</div>");
+         }
+       },
+       error: function(res) {
+         console.log(res);
+       }
+     })
+   }else {
+     alert("llenar todos los campos");
+   }
+});
+// articulos de estudio falta como hago los archivos
+// aprendiz

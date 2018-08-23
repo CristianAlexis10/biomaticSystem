@@ -193,5 +193,14 @@
 				header("location:inicio");
 			}
 		}
+		function statistics(){
+			if (isset($_SESSION['USER']['ROL'])) {
+				require 'views/include/scope.header.php';
+				require 'views/modules/admin/product/statistics/statistics.php';
+			}else {
+				session_destroy();
+				header("location:inicio");
+			}
+		}
 	}
 ?>

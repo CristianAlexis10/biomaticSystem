@@ -30,6 +30,7 @@ RewriteRule ^listas-asistencia$ index.php?c=views&a=assistance
 RewriteRule ^informes-investigacion$ index.php?c=views&a=reports
 RewriteRule ^compras-contrataciones$ index.php?c=views&a=purchases
 RewriteRule ^publicaciones$ index.php?c=views&a=publication
+RewriteRule ^estadisticas$ index.php?c=views&a=statistics
 RewriteRule ^articulos-estudio$ index.php?c=views&a=articles
 RewriteRule ^aliados$ index.php?c=views&a=aliados
 RewriteRule ^aprendices$ index.php?c=views&a=alumns

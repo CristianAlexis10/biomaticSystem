@@ -25,7 +25,7 @@
 <div class="containerModal" id="modal">
   <div class="content--modal">
     <span id="closeModal" onclick="closeModal(event, 'modal')">&times;</span>
-    <h1 class="titleModal">registrar producto</h1>
+    <h1 class="titleModal">registrar aliado</h1>
     <form id="formAliados">
       <div class="wrap--form big">
         <label for="nameAliado">entidad</label>
@@ -40,8 +40,8 @@
         <input type="text" id="typeAliado">
       </div>
       <div class="wrap--form big">
-        <label for="typeAliado">estado</label>
-        <select class="" name="">
+        <label for="statusAliado">estado</label>
+        <select id="statusAliado">
           <option value="">activo</option>
           <option value="">inactivo</option>
         </select>
